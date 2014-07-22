@@ -20,7 +20,11 @@ public class UserDAO {
 		try {
 			TypedQuery<User> q = em.createQuery(
 					"from User", User.class);
-			return q.getResultList();
+			q.setHint("org.hibernate.cacheable", Boolean.FALSE);
+			
+			List<User> result = q.getResultList();
+			em.clear();
+			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -32,19 +36,23 @@ public class UserDAO {
 			TypedQuery<User> q = em.createQuery(
 					"from User where username = '" + username + "' and password = '" + password + "'", User.class);
 			
-			return q.getSingleResult();
+			User result = q.getSingleResult();
+			em.clear();
+			return result;
 			
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-	public User consultarPorPK(Long pk) throws Exception {
+	public User findByPrimaryKey(Long pk) throws Exception {
 		try {
 			TypedQuery<User> q = em.createQuery(
-					"select usu from Usuario usu where usu.id = " + pk,
+					"from User where id = " + pk,
 					User.class);
-			return q.getSingleResult();
+			User result = q.getSingleResult(); 
+			em.clear();
+			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -57,12 +65,14 @@ public class UserDAO {
 			tx.begin();
 			
 			TypedQuery<User> q = em.createQuery(
-					"select usu from Usuario usu where usu.id = " + pk,
+					"from User where id = " + pk,
 					User.class);
 			em.remove(q.getSingleResult());
 			
 			em.flush();
 			tx.commit();
+			
+			em.clear();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -79,6 +89,8 @@ public class UserDAO {
 				em.merge(usuario);
 			em.flush();
 			tx.commit();
+			
+			em.clear();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

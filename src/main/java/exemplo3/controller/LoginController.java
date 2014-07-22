@@ -21,6 +21,7 @@ public class LoginController extends HttpServlet {
 
 	private UserDAO dao = new UserDAO();
 
+	/*sessões de 30 min*/
 	private SessionManager sm = new SessionManager(60 * 30);
 	
 	protected void doGet(HttpServletRequest request,

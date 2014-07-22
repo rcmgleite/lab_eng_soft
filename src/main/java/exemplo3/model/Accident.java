@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 
@@ -36,6 +38,7 @@ public class Accident implements java.io.Serializable {
 	private Long id;
 	
 	@Column(name="data")
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	
 	@Column(name="localizacao")

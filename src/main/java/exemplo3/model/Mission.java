@@ -14,8 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ForeignKey;
-
 /**
  * 
  * 	Entidade do banco que possui os dados das Missões
@@ -50,9 +48,7 @@ public class Mission implements java.io.Serializable{
 	/* -- Relacionamentos -- */
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idAcidente")
-	@ForeignKey(name="Acidente_idAcidente")
-//	@Column(name="Acidente_idAcidente")
+	@JoinColumn(name = "Acidente_idAcidente")
 	private Accident accident;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="mission")

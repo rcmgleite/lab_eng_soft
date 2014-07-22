@@ -40,13 +40,11 @@ public class Resource  implements java.io.Serializable{
 	/* -- Relacionamentos -- */
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idMissao")	
-	@ForeignKey(name="Missao_idMissao")
+	@JoinColumn(name = "Missao_idMissao")	
 	private Mission mission;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idTipoDeRecurso")
-	@ForeignKey(name="TipoDeRecurso_idTipoDeRecurso")
+	@JoinColumn(name = "TipoDeRecurso_idTipoDeRecurso")
 	private ResourceType resourceType;
 
 	/* -- Relacionamentos -- */

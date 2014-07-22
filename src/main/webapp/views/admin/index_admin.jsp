@@ -5,15 +5,9 @@
 </div>
 -->
 
-<div class="row" style="float: left; margin-top: 2%">
-	<div class="span2">
-		<ul class="nav nav-pills nav-stacked">
-			<li><a href="#">Usuários</a></li>
-			<li><a href="#">Acidentes</a></li>
-			<li><a href="#">Missões </a></li>
-			<li><a href="#">Recursos</a></li>
-			<li><a href="#">Relatórios</a></li>
-		</ul>
-	</div>
+<!-- TODO -->
+<div class="inital_msg">
+<h2> Bem vindo à página inicial do SVC </h2>
+<p> Navegue pelo sistema utilizando o menu lateral. </p>
 </div>
 <%@include file="footer.jsp"%>
