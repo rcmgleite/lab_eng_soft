@@ -39,8 +39,10 @@
           <a class="navbar-brand" href="#">SVC</a>
         </div>
         <div class="collapse navbar-collapse">
+          <a class="navbar-brand" href="#" style="float:right">Coordenador</a>
           <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/login">Home</a></li>
+            <li style="float: rigth"><a href="${pageContext.request.contextPath}/logout">Log out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
