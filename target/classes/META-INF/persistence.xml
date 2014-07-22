@@ -9,15 +9,18 @@
 		<!-- >jta-data-source>jdbc/example</jta-data-source -->
 		
 		<class>exemplo3.model.User</class>  
+		<class>exemplo3.model.Accident</class>  
+		<class>exemplo3.model.Mission</class>  
+		<class>exemplo3.model.Resource</class>  
+		<class>exemplo3.model.ResourceType</class>  
 		
 		<properties>
-            <property name="hibernate.connection.datasource" value="java:comp/env/jdbc/my_test"/>
+            <property name="hibernate.connection.datasource" value="java:comp/env/jdbc/CMS-DB"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 	        <property name="hibernate.format_sql" value="true"/>
 	        <property name="hibernate.show_sql" value="true" />
 	    </properties>
-
-		
+	    
 	</persistence-unit>
 	
 </persistence>

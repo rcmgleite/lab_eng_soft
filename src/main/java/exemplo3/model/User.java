@@ -7,21 +7,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "users")
+/**
+ * 
+ * 	Entidade do banco que possui os dados dos usuários
+ * 
+ * 	dev-status - TODO
+ * 
+ **/
+
 @Entity
-public class User {
+@Table(name = "Usuario")
+public class User implements java.io.Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4739247824555444574L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idUsuario")
 	private Long id;
 
-	@Column(name="username")
+	@Column(name="Username")
 	private String username;
 
-	@Column(name="password")
+	@Column(name="Password")
 	private String password;
 	
-	@Column(name="role")
+	@Column(name="Role")
 	private Long role;
 	
 	public Long getId() {
