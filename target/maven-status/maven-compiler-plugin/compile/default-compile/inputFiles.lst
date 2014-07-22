@@ -1,6 +1,7 @@
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/users/NovoUsuarioController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/users/RemoverUsuarioController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/users/SalvarUsuarioController.java
+/home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/ListarRecrusosAlocadosController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/model/ResourceType.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/users/ListarUsuariosController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/dao/RecursoDAO.java
@@ -9,7 +10,7 @@
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/logoutController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/model/Accident.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/dao/MissionDAO.java
-/home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/ListarRecrusoController.java
+/home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/ListarTiposRecursosController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/utils/SessionManager.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/dao/UserDAO.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/listeners/SessionListener.java
@@ -18,4 +19,6 @@
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/missions/ListarMissoesController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/model/Mission.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/dao/AccidentDAO.java
+/home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/EditarTipoRecursoController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/LoginController.java
+/home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/SalvarTipoRecursoController.java

@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<div class="container" style="margin-left: 6%; margin-top: 2%">
+<div class="container custom_table">
 	<div style="float: right">
 		<c:if test="${not empty msgSucesso}">
 			<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>

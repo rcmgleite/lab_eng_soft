@@ -1,0 +1,35 @@
+<%@include file="header.jsp"%>
+<div class="container custom_table">
+	<div style="float: right">
+		<c:if test="${not empty msgSucesso}">
+			<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
+		</c:if>
+		<h2 class="list_title">Recursos Alocados</h2>
+		<table class="table table-striped" style="margin-left: 3%" >  
+	        <thead>  
+	          <tr>  
+	            <th  style="width: 30%;">ID</th>  
+	            <th  style="width: 30%;">Tipo</th>  
+	            <th  style="width: 30%;">Quantidade</th>  
+	            <th  style="width: 30%;">Missão</th>  
+	          </tr>  
+	        </thead>  
+	        <tbody>  
+				<c:forEach items="${resources}" var="resource">
+			          <tr>  
+			            <td class="text-left">${resource.id}</td>
+			            <td class="text-left">${resource.resourceType.name}</td>
+			            <td class="text-left">${resource.quantity}</td>
+			            <td class="text-left">${resource.mission.id}</td>
+			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharRecurso?id=${resource.id}">Detalhar</a>
+			            <td class="text-left"><a href="${pageContext.request.contextPath}/removerRecurso?id=${resource.id}">Remover</a></td>  
+			          </tr>				
+				</c:forEach>
+		
+			</tbody>  
+		</table>
+		
+		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novoRecurso" role="button">Cadastrar Recurso</a>
+	</div>
+</div>
+<%@include file="../footer.jsp"%>

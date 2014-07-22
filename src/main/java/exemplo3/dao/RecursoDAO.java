@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import exemplo3.model.Resource;
+import exemplo3.model.ResourceType;
+import exemplo3.model.User;
 
 public class RecursoDAO {
 
@@ -15,7 +18,7 @@ public class RecursoDAO {
 			.createEntityManagerFactory("examplePU");
 	EntityManager em = factory.createEntityManager();
 	
-	public List<Resource> getResources(){
+	public List<Resource> getAllocatedResources(){
 		try {
 			TypedQuery<Resource> q = em.createQuery(
 					"from Resource", Resource.class);
@@ -26,5 +29,48 @@ public class RecursoDAO {
 			return null;
 		}
 	}
+	
+	public ResourceType findRTByPrimaryKey(Long pk) throws Exception {
+		try {
+			TypedQuery<ResourceType> q = em.createQuery(
+					"from ResourceType where id = " + pk,
+					ResourceType.class);
+			ResourceType result = q.getSingleResult(); 
+			em.clear();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 
+	public List<ResourceType> getTypeResources(){
+		try {
+			TypedQuery<ResourceType> q = em.createQuery(
+					"from ResourceType", ResourceType.class);
+			
+			return q.getResultList();
+			
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public void salvarTipoRecurso(ResourceType rt) throws Exception {
+		try {
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
+			if(rt.getId() == null)
+				em.persist(rt);
+			else
+				em.merge(rt);
+			em.flush();
+			tx.commit();
+			
+			em.clear();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 }

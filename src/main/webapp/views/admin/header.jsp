@@ -56,7 +56,8 @@
 				<li><a href="${pageContext.request.contextPath}/listarUsuarios">Usuários</a></li>
 				<li><a href="${pageContext.request.contextPath}/listarAcidentes">Acidentes</a></li>
 				<li><a href="${pageContext.request.contextPath}/listarMissoes">Missões </a></li>
-				<li><a href="${pageContext.request.contextPath}/listarRecursos">Recursos</a></li>
+				<li><a href="${pageContext.request.contextPath}/listarRecursosAlocados">Recursos Alocados</a></li>
+				<li><a href="${pageContext.request.contextPath}/listarTiposDeRecursos">Tipos de Recursos</a></li>
 				<li><a href="#">Relatórios</a></li>
 			</ul>
 		</div>

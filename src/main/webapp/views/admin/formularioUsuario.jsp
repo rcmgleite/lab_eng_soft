@@ -1,6 +1,6 @@
 <%@include file="header.jsp"%>
 <br>
-<div class="container" style="margin-left: 10%; margin-top: 2%">
+<div class="container custom_table">
 	<h2 class="list_title">Novo Usuário</h2>
 	<form role="form"
 		action="${pageContext.request.contextPath}/salvarUsuario" method="post">

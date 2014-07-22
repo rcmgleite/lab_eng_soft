@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<div class="container" style="margin-left: 6%; margin-top: 2%">
+<div class="container custom_table">
 	<div style="float: right">
 		<h2 class="list_title">Usuários</h2>
 		<table class="table table-striped" style="margin-left: 3%" >  
