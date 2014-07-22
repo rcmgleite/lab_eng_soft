@@ -1,4 +1,26 @@
+<%@page import="utils.SessionManager"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	if(session != null || session.getAttribute("role") != null){
+		SessionManager sm = new SessionManager(60 * 30);
+		Boolean hasSession = sm.verifySession(request, response);
+		if(hasSession){
+			String role = session.getAttribute("role").toString();
+			if(role.equals("0")){
+				response.sendRedirect("/svc/views/admin/index_admin.jsp");			
+			}
+			else if(role.equals("1")){
+				response.sendRedirect("/svc/views/coord/index_coord.jsp");
+			}
+			else if(role.equals("2")){
+				response.sendRedirect("/svc/views/espec/index_espec.jsp");
+			}
+			else if(role.equals("3")){
+				response.sendRedirect("/svc/views/chefe_missao/index_chefe_missao.jsp");
+			}
+		}
+	}
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>

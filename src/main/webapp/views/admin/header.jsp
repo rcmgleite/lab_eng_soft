@@ -43,7 +43,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/login">Home</a></li>
-            <li><a href="${pageContext.request.contextPath}/logout">Log out</a></li>
+            <li style="float: rigth"><a href="${pageContext.request.contextPath}/logout">Log out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
