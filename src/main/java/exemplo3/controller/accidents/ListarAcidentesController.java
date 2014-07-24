@@ -36,7 +36,15 @@ public class ListarAcidentesController extends HttpServlet{
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			List<Accident> accidents = dao.getAccidents();
-		
+			
+			for(Accident accident: accidents){
+				/*
+				 *	Seta os atributos typeAlias e statusAlias
+				 */
+				accident.setTypeAlias();
+				accident.setStatusAlias();
+			}
+			
 			request.setAttribute("accidents", accidents);
 			request.getRequestDispatcher("/views/admin/listarAcidentes.jsp").forward(request, response);
 		} catch (Exception e) {

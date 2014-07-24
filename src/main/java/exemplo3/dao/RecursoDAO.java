@@ -10,7 +10,6 @@ import javax.persistence.TypedQuery;
 
 import exemplo3.model.Resource;
 import exemplo3.model.ResourceType;
-import exemplo3.model.User;
 
 public class RecursoDAO {
 

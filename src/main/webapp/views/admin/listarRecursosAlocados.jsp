@@ -10,8 +10,7 @@
 	          <tr>  
 	            <th  style="width: 30%;">ID</th>  
 	            <th  style="width: 30%;">Tipo</th>  
-	            <th  style="width: 30%;">Quantidade</th>  
-	            <th  style="width: 30%;">Missão</th>  
+	            <th  style="width: 30%;">ID Missão</th>  
 	          </tr>  
 	        </thead>  
 	        <tbody>  
@@ -19,8 +18,12 @@
 			          <tr>  
 			            <td class="text-left">${resource.id}</td>
 			            <td class="text-left">${resource.resourceType.name}</td>
-			            <td class="text-left">${resource.quantity}</td>
-			            <td class="text-left">${resource.mission.id}</td>
+			            <c:if test="${not empty resource.mission.id}">
+			            	<td class="text-left">${resource.mission.id}</td>
+			            </c:if>
+			            <c:if test="${empty resource.mission.id}">
+			            	<td class="text-left">não alocado</td>
+			            </c:if>
 			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharRecurso?id=${resource.id}">Detalhar</a>
 			            <td class="text-left"><a href="${pageContext.request.contextPath}/removerRecurso?id=${resource.id}">Remover</a></td>  
 			          </tr>				

@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import utils.ProjectEnums;
 
 /**
  * 
@@ -62,6 +65,15 @@ public class Accident implements java.io.Serializable {
 	private List<Mission> missions = new ArrayList<Mission>();
 	
 	/* -- Relacionamentos -- */
+
+	
+	/*Transients(significa que não são colunas do banco)*/
+	@Transient
+	private String typeAlias;
+	
+	@Transient
+	private String statusAlias;
+	/*Transients(significa que não são colunas do banco)*/
 
 	public Long getId() {
 		return id;
@@ -125,5 +137,50 @@ public class Accident implements java.io.Serializable {
 
 	public void setMissions(List<Mission> missions) {
 		this.missions = missions;
+	}
+
+	public String getTypeAlias() {
+		return typeAlias;
+	}
+
+	public void setTypeAlias() {
+		ProjectEnums.AccidentStatus _status = ProjectEnums.getStatusByInt(Integer.parseInt(this.status.toString()));
+		switch(_status){
+			case OPEN:
+				this.statusAlias = "em aberto";
+				break;
+			case IN_PROGRESS:
+				this.statusAlias = "em progesso";
+				break;
+			
+			case CONCLUDED:
+				this.statusAlias = "concluído";
+				break;
+		}
+	}
+
+	public String getStatusAlias() {
+		return statusAlias;
+	}
+
+	public void setStatusAlias() {
+		ProjectEnums.AccidentType _type = ProjectEnums.getTypeByInt(Integer.parseInt(this.type.toString()));
+		switch(_type){
+			case VHEICLE_VHEICLE_COLLISION:
+				this.typeAlias = "Colisão entre veículos";
+				break;
+			case VHEICLE_OBSTACLE_COLLISION:
+				this.typeAlias = "Colisão entre veículo e obstáculo";
+				break;
+			case RUN_OVER:
+				this.typeAlias = "Atropelamento";
+				break;
+			case BROKEN_VHEICLE:
+				this.typeAlias = "Veículo quebrado";
+				break;
+			case ROLLOVER:
+				this.typeAlias = "Capotamento";
+				break;
+		}
 	}
 }

@@ -25,8 +25,8 @@
 			            <td class="text-left">${accident.location}</td>
 			            <td class="text-left">${accident.numVictims}</td>
 			            <td class="text-left">${accident.description}</td>
-			            <td class="text-left">${accident.type}</td>
-			            <td class="text-left">${accident.status}</td>
+			            <td class="text-left">${accident.typeAlias}</td>
+			            <td class="text-left">${accident.statusAlias}</td>
 			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharAcidente?id=${accident.id}">Detalhes</a>
 		             	<td class="text-left"><a href="${pageContext.request.contextPath}/removerAcidente?id=${accident.id}">Remover</a></td>  
 			          </tr>				

@@ -32,8 +32,11 @@ public class Resource  implements java.io.Serializable{
 	@Column(name="idRecurso")
 	private Long id;
 	
-	@Column(name="Quantidade")
-	private Long quantity;
+//	/** 
+//	 * 	FIXME - quantidade não faz sentido. será um bool falando se o recurso esta alocado ou nao.
+//	 **/
+//	@Column(name="Quantidade")
+//	private Long quantity;
 	
 	/* -- Relacionamentos -- */
 
@@ -55,13 +58,13 @@ public class Resource  implements java.io.Serializable{
 		this.id = id;
 	}
 
-	public Long getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Long quantity) {
-		this.quantity = quantity;
-	}
+//	public Long getQuantity() {
+//		return quantity;
+//	}
+//
+//	public void setQuantity(Long quantity) {
+//		this.quantity = quantity;
+//	}
 	
 	public Mission getMisson() {
 		return mission;

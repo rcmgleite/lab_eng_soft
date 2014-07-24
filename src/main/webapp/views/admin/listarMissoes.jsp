@@ -8,11 +8,11 @@
 		<table class="table table-striped" style="margin-left: 3%" >  
 	        <thead>  
 	          <tr>  
-	            <th  style="width: 10%;">ID</th>  
-	            <th  style="width: 10%;">Descrição</th>  
-	            <th  style="width: 10%;">Status</th>  
-	            <th  style="width: 10%;">Prioridade</th>  
-	            <th  style="width: 10%;">ID Acidente</th>  
+	            <th  style="width: 20%;">ID</th>  
+	            <th  style="width: 20%;">Descrição</th>  
+	            <th  style="width: 20%;">Status</th>  
+	            <th  style="width: 20%;">Prioridade</th>  
+	            <th  style="width: 20%;">ID Acidente</th>  
 	          </tr>  
 	        </thead>  
 	        <tbody>  

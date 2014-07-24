@@ -6,7 +6,7 @@
 -->
 
 <!-- TODO -->
-<div class="inital_msg">
+<div class="centralize_msg">
 <h2> Bem vindo à página inicial do SVC </h2>
 <p> Navegue pelo sistema utilizando o menu lateral. </p>
 </div>

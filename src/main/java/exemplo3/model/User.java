@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import utils.ProjectEnums;
 
 /**
  * 
@@ -37,6 +40,11 @@ public class User implements java.io.Serializable{
 	
 	@Column(name="Role")
 	private Long role;
+
+	/*Transients*/
+	@Transient
+	private String roleAlias;
+	/*Transients*/
 	
 	public Long getId() {
 		return id;
@@ -70,5 +78,25 @@ public class User implements java.io.Serializable{
 		this.role = role;
 	}
 
+	public String getRoleAlias() {
+		return roleAlias;
+	}
+
+	public void setRoleAlias() {
+		ProjectEnums.UserRoles _role = ProjectEnums.getUserRoleByInt(Integer.parseInt(this.role.toString()));
+		switch(_role){
+			case ADMIN:
+				this.roleAlias = "Administrador";
+				break;
+			case COORD:
+				this.roleAlias  = "Coordenador";
+				break;
+			case ESPEC:
+				this.roleAlias  = "Especialista";
+				break;
+			case CHEFE_MISSAO:
+				this.roleAlias = "Chefe de missão";	
+		}
+	}
 
 }

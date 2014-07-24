@@ -35,7 +35,11 @@ public class ListarUsuariosController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			List<User> usuarios = dao.getUsers();
-		
+			
+			for(User user: usuarios){
+				user.setRoleAlias();
+			}
+			
 			request.setAttribute("usuarios", usuarios);
 			request.getRequestDispatcher("/views/admin/listarUsuarios.jsp").forward(request, response);
 		} catch (Exception e) {

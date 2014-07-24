@@ -6,7 +6,7 @@
 
 <div>
 
-	<form role="form"
+	<form class ="list_title" style="width: 400px" role="form"
 		action="${pageContext.request.contextPath}/login"
 		method="post"
 		class="form-signin">
@@ -26,7 +26,7 @@
 			</c:if>
 		</div>
 		
-		<button type="submit" class="btn btn-primary btn-lg">Login</button>
+		<button style="float:right" type="submit" class="btn btn-primary btn-lg">Login</button>
 	</form>
 </div>
 
