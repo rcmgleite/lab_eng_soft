@@ -21,7 +21,9 @@ public class AccidentDAO {
 			TypedQuery<Accident> q = em.createQuery(
 					"from Accident", Accident.class);
 			
-			return q.getResultList();
+			List<Accident> result = q.getResultList();
+			em.clear();
+			return result;
 			
 		} catch (Exception e) {
 			return null;

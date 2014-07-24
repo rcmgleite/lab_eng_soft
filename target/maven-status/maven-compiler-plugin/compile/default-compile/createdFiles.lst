@@ -13,6 +13,7 @@ exemplo3/controller/accidents/RemoverAcidenteController.class
 exemplo3/controller/recurso/ListarRecrusosAlocadosController.class
 exemplo3/controller/recurso/EditarTipoRecursoController.class
 exemplo3/controller/accidents/ListarAcidentesController.class
+exemplo3/dao/GenericDao.class
 exemplo3/model/User$1.class
 exemplo3/dao/AccidentDAO.class
 exemplo3/controller/users/NovoUsuarioController.class

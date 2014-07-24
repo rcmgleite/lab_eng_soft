@@ -21,6 +21,7 @@
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/dao/RecursoDAO.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/utils/ProjectEnums.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/model/Accident.java
+/home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/dao/GenericDao.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/accidents/RemoverAcidenteController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/utils/SessionManager.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/listeners/SessionListener.java

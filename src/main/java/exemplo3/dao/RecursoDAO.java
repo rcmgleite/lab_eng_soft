@@ -22,7 +22,9 @@ public class RecursoDAO {
 			TypedQuery<Resource> q = em.createQuery(
 					"from Resource", Resource.class);
 			
-			return q.getResultList();
+			List<Resource> result = q.getResultList();
+			em.clear();
+			return result;
 			
 		} catch (Exception e) {
 			return null;
@@ -48,7 +50,9 @@ public class RecursoDAO {
 			TypedQuery<ResourceType> q = em.createQuery(
 					"from ResourceType", ResourceType.class);
 			
-			return q.getResultList();
+			List<ResourceType> result = q.getResultList();
+			em.clear();
+			return result;
 			
 		} catch (Exception e) {
 			return null;
