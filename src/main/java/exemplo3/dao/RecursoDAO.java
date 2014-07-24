@@ -72,4 +72,24 @@ public class RecursoDAO {
 			throw e;
 		}
 	}
+	
+	public void removerTipoRecurso(Long pk) throws Exception {
+		try {
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
+			
+			TypedQuery<ResourceType> q = em.createQuery(
+					"from ResourceType where id = " + pk,
+					ResourceType.class);
+			em.remove(q.getSingleResult());
+			
+			em.flush();
+			tx.commit();
+			
+			em.clear();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 }
