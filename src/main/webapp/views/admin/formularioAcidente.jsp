@@ -8,7 +8,7 @@
 			<input
 				type="date" class="form-control" id="_date" name="_date"
 				pattern="AAAA-MM-DD"
-				value="${acidente.date.toString}"/>
+				value="${acidente.date}"/>
 		</div>
 		<div class="form-group">
 			<label for="location">Localização</label> 

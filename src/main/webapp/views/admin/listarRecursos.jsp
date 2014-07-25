@@ -4,7 +4,7 @@
 		<c:if test="${not empty msgSucesso}">
 			<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
 		</c:if>
-		<h2 class="list_title">Recursos Alocados</h2>
+		<h2 class="list_title">Recursos</h2>
 		<table class="table table-striped" style="margin-left: 3%" >  
 	        <thead>  
 	          <tr>  

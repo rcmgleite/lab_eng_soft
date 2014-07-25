@@ -23,7 +23,7 @@ public class RecursoDAO {
 					"from Resource", Resource.class);
 			
 			List<Resource> result = q.getResultList();
-			em.clear();
+//			em.clear();
 			return result;
 			
 		} catch (Exception e) {

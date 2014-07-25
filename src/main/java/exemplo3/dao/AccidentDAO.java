@@ -67,4 +67,18 @@ public class AccidentDAO {
 			throw e;
 		}
 	}
+	
+	public Accident findByPrimaryKey(Long pk) throws Exception {
+		try {
+			TypedQuery<Accident> q = em.createQuery(
+					"from Accident where id = " + pk,
+					Accident.class);
+			Accident result = q.getSingleResult(); 
+			em.clear();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 }
