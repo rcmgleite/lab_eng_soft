@@ -35,7 +35,7 @@ public class ListarRecrusosAlocadosController extends HttpServlet{
 	private void doService(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<Resource> resources = dao.getAllocatedResources();
+			List<Resource> resources = dao.getResources();
 		
 			request.setAttribute("resources", resources);
 			request.getRequestDispatcher("/views/admin/listarRecursos.jsp").forward(request, response);

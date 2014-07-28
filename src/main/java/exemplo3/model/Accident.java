@@ -61,7 +61,7 @@ public class Accident implements java.io.Serializable {
 	
 	/* -- Relacionamentos -- */
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accident")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "accident")
 	private List<Mission> missions = new ArrayList<Mission>();
 	
 	/* -- Relacionamentos -- */

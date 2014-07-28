@@ -17,7 +17,7 @@ public class RecursoDAO {
 			.createEntityManagerFactory("examplePU");
 	EntityManager em = factory.createEntityManager();
 	
-	public List<Resource> getAllocatedResources(){
+	public List<Resource> getResources(){
 		try {
 			TypedQuery<Resource> q = em.createQuery(
 					"from Resource", Resource.class);
@@ -58,6 +58,20 @@ public class RecursoDAO {
 			return null;
 		}
 	}
+
+	public List<Resource> getResourcesWhere(String where){
+		try {
+			TypedQuery<Resource> q = em.createQuery(
+					"from Resource where " + where, Resource.class);
+			
+			List<Resource> result = q.getResultList();
+			em.clear();
+			return result;
+			
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	public void salvarTipoRecurso(ResourceType rt) throws Exception {
 		try {
@@ -87,6 +101,24 @@ public class RecursoDAO {
 					ResourceType.class);
 			em.remove(q.getSingleResult());
 			
+			em.flush();
+			tx.commit();
+			
+			em.clear();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	public void salvarRecurso(Resource resource) throws Exception {
+		try {
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
+			if(resource.getId() == null)
+				em.persist(resource);
+			else
+				em.merge(resource);
 			em.flush();
 			tx.commit();
 			

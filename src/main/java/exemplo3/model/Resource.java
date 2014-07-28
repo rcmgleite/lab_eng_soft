@@ -40,11 +40,11 @@ public class Resource  implements java.io.Serializable{
 	
 	/* -- Relacionamentos -- */
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Missao_idMissao")	
 	private Mission mission;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "TipoDeRecurso_idTipoDeRecurso")
 	private ResourceType resourceType;
 
@@ -66,14 +66,6 @@ public class Resource  implements java.io.Serializable{
 //		this.quantity = quantity;
 //	}
 	
-	public Mission getMisson() {
-		return mission;
-	}
-
-	public void setMisson(Mission misson) {
-		this.mission = misson;
-	}
-
 	public Mission getMission() {
 		return mission;
 	}

@@ -1,3 +1,4 @@
+exemplo3/controller/missions/NovaMissaoController.class
 exemplo3/controller/LoginController.class
 utils/ProjectEnums.class
 utils/ProjectEnums$AccidentStatus.class
@@ -5,17 +6,20 @@ exemplo3/controller/users/ListarUsuariosController.class
 exemplo3/controller/logoutController.class
 exemplo3/controller/recurso/SalvarTipoRecursoController.class
 exemplo3/controller/users/RemoverUsuarioController.class
+exemplo3/controller/missions/SalvarMissaoController.class
 utils/ProjectEnums$AccidentType.class
 exemplo3/dao/MissionDAO.class
 exemplo3/model/Resource.class
 exemplo3/controller/recurso/NovoTipoRecursoController.class
 exemplo3/controller/accidents/RemoverAcidenteController.class
+utils/ProjectEnums$MissionStatus.class
 exemplo3/controller/recurso/ListarRecrusosAlocadosController.class
 exemplo3/controller/recurso/EditarTipoRecursoController.class
 exemplo3/controller/accidents/ListarAcidentesController.class
 exemplo3/dao/GenericDao.class
 exemplo3/model/User$1.class
 exemplo3/dao/AccidentDAO.class
+utils/ProjectEnums$MissionPriority.class
 exemplo3/controller/users/NovoUsuarioController.class
 exemplo3/controller/accidents/NovoAcidenteController.class
 exemplo3/listeners/SessionListener.class

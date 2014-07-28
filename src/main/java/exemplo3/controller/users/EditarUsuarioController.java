@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.ProjectEnums;
+import utils.ProjectEnums.UserRoles;
 import exemplo3.dao.UserDAO;
 import exemplo3.model.User;
 
@@ -39,7 +41,10 @@ public class EditarUsuarioController extends HttpServlet {
 			Long pk = Long.parseLong(request.getParameter("id"));
 			User usuario = dao.findByPrimaryKey(pk);
 
+			UserRoles[] roles = ProjectEnums.UserRoles.values();
+			
 			request.setAttribute("usuario", usuario);
+			request.setAttribute("roles", roles);
 			request.getRequestDispatcher("/views/admin/formularioUsuario.jsp")
 					.forward(request, response);
 		} catch (Exception e) {

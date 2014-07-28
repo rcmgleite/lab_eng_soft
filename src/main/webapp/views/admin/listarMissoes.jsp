@@ -23,7 +23,7 @@
 			            <td class="text-left">${mission.status}</td>  
 			            <td class="text-left">${mission.priority}</td>  
 			            <td class="text-left">${mission.accident.id}</td>  
-			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharMissao?id=${mission.id}">Editar</a>
+			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharMissao?id=${mission.id}">Editar</a></td>
 			            <td class="text-left"><a href="${pageContext.request.contextPath}/removerMissao?id=${mission.id}">Remover</a></td>  
 			          </tr>				
 				</c:forEach>
@@ -31,7 +31,7 @@
 			</tbody>  
 		</table>
 		
-		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novaMissao" role="button">Cadastrar Missão</a>
+		<!-- <a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novaMissao" role="button">Cadastrar Missão</a>-->
 	</div>
 </div>
 <%@include file="../footer.jsp"%>

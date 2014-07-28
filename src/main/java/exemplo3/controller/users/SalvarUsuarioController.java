@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.ProjectEnums;
 import exemplo3.dao.UserDAO;
 import exemplo3.model.User;
 
@@ -36,15 +37,15 @@ public class SalvarUsuarioController extends HttpServlet {
 			String id = request.getParameter("id");
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			String role = request.getParameter("role");
-
+			String new_role = request.getParameter("selected_role");
+			
 			User usuario = new User();
 			if (id != null && !id.equals("") ){
 				usuario.setId(Long.parseLong(id));
 			}
-
 			usuario.setUsername(username);
-			usuario.setRole(Long.parseLong(role));
+			Integer role_value = ProjectEnums.UserRoles.valueOf(new_role).ordinal();
+			usuario.setRole(Long.parseLong(role_value.toString()));
 			usuario.setPassword(password);
 
 			dao.salvar(usuario);

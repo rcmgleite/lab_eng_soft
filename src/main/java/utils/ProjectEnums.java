@@ -14,8 +14,16 @@ public class ProjectEnums {
 		ADMIN, COORD, ESPEC, CHEFE_MISSAO
 	}
 	
-	public static AccidentStatus getStatusByInt(Integer i){
-		switch(i){
+	public static enum MissionStatus{
+		REQUESTING, IN_EXECUTION, CONCLUDED
+	}
+	
+	public static enum MissionPriority{
+		LOW, MEDIUM, HIGH
+	}
+	
+	public static AccidentStatus getStatusByInt(Integer index){
+		switch(index){
 			case 0:
 				return AccidentStatus.OPEN;
 			case 1:
@@ -27,8 +35,8 @@ public class ProjectEnums {
 		}
 	}
 
-	public static AccidentType getTypeByInt(Integer i){
-		switch(i){
+	public static AccidentType getTypeByInt(Integer index){
+		switch(index){
 		case 0:
 			return AccidentType.VHEICLE_VHEICLE_COLLISION;
 		case 1:
@@ -44,8 +52,8 @@ public class ProjectEnums {
 		}
 	}
 	
-	public static UserRoles getUserRoleByInt(Integer i){
-		switch(i){
+	public static UserRoles getUserRoleByInt(Integer index){
+		switch(index){
 			case 0:
 				return UserRoles.ADMIN;
 			case 1:
@@ -56,6 +64,32 @@ public class ProjectEnums {
 				return UserRoles.CHEFE_MISSAO;
 			default:
 				return null;
+		}
+	}
+	
+	public static MissionStatus getMissionStatusByInt(Integer index){
+		switch (index) {
+		case 0:
+			return MissionStatus.REQUESTING;
+		case 1:
+			return MissionStatus.IN_EXECUTION;
+		case 2:
+			return MissionStatus.CONCLUDED;
+		default:
+			return null;
+		}
+	}
+	
+	public static MissionPriority getMissionPriorityByInt(Integer index){
+		switch (index) {
+		case 0:
+			return MissionPriority.LOW;
+		case 1:
+			return MissionPriority.MEDIUM;
+		case 2:
+			return MissionPriority.HIGH;
+		default:
+			return null;
 		}
 	}
 }
