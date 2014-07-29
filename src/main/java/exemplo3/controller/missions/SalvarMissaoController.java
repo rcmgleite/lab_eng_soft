@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.AccidentStatusManager;
 import utils.ProjectEnums;
 import exemplo3.dao.AccidentDAO;
 import exemplo3.dao.MissionDAO;
@@ -65,15 +66,17 @@ public class SalvarMissaoController extends HttpServlet {
 			
 			String[] selected_resources = request.getParameterValues("selected_resources");
 			String selected_resources_str = "";
+			List<Resource> _resources = null;
 			
-			for(int i = 0; i < selected_resources.length; i++){
-				selected_resources_str += selected_resources[i];
-				if(i != selected_resources.length - 1)
-					selected_resources_str += ",";
+			if(selected_resources != null){
+				for(int i = 0; i < selected_resources.length; i++){
+					selected_resources_str += selected_resources[i];
+					if(i != selected_resources.length - 1)
+						selected_resources_str += ",";
+				}
+				
+				_resources = recDAO.getResourcesWhere("id in (" + selected_resources_str + ")");
 			}
-			
-			List<Resource> _resources = recDAO.getResourcesWhere("id in (" + selected_resources_str + ")");
-			
 			//			Integer role_value = ProjectEnums.UserRoles.valueOf(new_role).ordinal();
 			//			usuario.setRole(Long.parseLong(role_value.toString()));
 			
@@ -88,13 +91,24 @@ public class SalvarMissaoController extends HttpServlet {
 			
 			dao.salvar(mission);
 
-			/**
-			 * 	Para cada recurso selecionado vincula missão
-			 **/
-			for(Resource resouce: _resources){
-				resouce.setMission(mission);
-				recDAO.salvarRecurso(resouce);
+			if(_resources != null){
+				/**
+				 * 	Para cada recurso selecionado vincula missão
+				 **/
+				for(Resource resouce: _resources){
+					resouce.setMission(mission);
+					recDAO.salvarRecurso(resouce);
+				}
 			}
+			
+			/**
+			 * 	Por fim, falta atualizar o status do acidente caso todas as missões dele estejam finalizadas
+			 * 	Perceba que recupero uma nova instância de acidente do banco para usar de parâmetro.
+			 * 	Caso isso não fosse feito, pegaríamos o status de missão antigo e o update não
+			 * 	funcionaria
+			 **/
+			accident = acDao.findByPrimaryKey(Long.parseLong(id_accident));
+			AccidentStatusManager.tryUpdateAccidentStatus(accident);
 			
 			request.setAttribute("msgSucesso",  "Missão salva com sucesso!");
 			

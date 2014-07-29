@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.ProjectEnums.AccidentType;
+
 @WebServlet("/novoAcidente")
 public class NovoAcidenteController extends HttpServlet {
 
@@ -32,6 +34,10 @@ public class NovoAcidenteController extends HttpServlet {
 	private void doService(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			AccidentType[] ac_types = AccidentType.values();
+			request.setAttribute("ac_types", ac_types);
+			
 			request.getRequestDispatcher("/views/admin/formularioAcidente.jsp")
 					.forward(request, response);
 		} catch (Exception e) {

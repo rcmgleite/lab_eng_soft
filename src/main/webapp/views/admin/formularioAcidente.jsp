@@ -31,21 +31,27 @@
 				placeholder="Descrição..."
 				value="${acidente.description}"/>
 		</div>
+		
 		<div class="form-group">
-			<label for="tipo">Tipo</label> 
-			<input
-				type="text" class="form-control" id="_tipo" name="_tipo"
-				placeholder="Tipo..."
-				value="${acidente.type}"/>
+			<label for="permissao">Tipo</label>
+			<select name="selected_type">
+  				<c:forEach items="${ac_types}" var="type">
+						<c:if test="${acidente.type == type.ordinal()}">
+						    <option selected="selected" value="${type}">
+						        ${type}
+						    </option>
+						</c:if>  									    
+						<c:if test="${acidente.type != type.ordinal()}">
+						    <option value="${type}">
+						        ${type}
+						    </option>
+						</c:if>  		
+  				</c:forEach>
+			</select> 
 		</div>
-		<div class="form-group">
-			<label for="status">Status</label> 
-			<input
-				type="text" class="form-control" id="_status" name="_status"
-				placeholder="Status..."
-				value="${acidente.status}"/>
-		</div>
+		
 		<input type="hidden" name="id" id="id" value="${acidente.id}"/>
+		<input type="hidden" name="_status" id="_status" value="${acidente.status}"/>
 		<button type="submit" class="btn btn-primary btn-lg" style="float: right">Salvar Alterações</button>
 	</form>
 

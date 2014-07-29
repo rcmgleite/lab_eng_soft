@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.ProjectEnums;
 import exemplo3.dao.AccidentDAO;
 import exemplo3.model.Accident;
 
@@ -40,7 +41,7 @@ public class SalvarAcidenteController extends HttpServlet {
 			String location = request.getParameter("_localizacao");
 			String numVictims = request.getParameter("_nVitimas");
 			String description = request.getParameter("_descricao");
-			String type = request.getParameter("_tipo");
+			String type = request.getParameter("selected_type");
 			String status = request.getParameter("_status");
 			
 			Accident accident = new Accident();
@@ -53,9 +54,14 @@ public class SalvarAcidenteController extends HttpServlet {
 			accident.setLocation(location);
 			accident.setNumVictims(Long.parseLong(numVictims));
 			accident.setDescription(description);
-			accident.setType(Long.parseLong(type));
-			accident.setStatus(Long.parseLong(status));
-
+			
+			Integer type_value = ProjectEnums.AccidentType.valueOf(type).ordinal();
+			accident.setType(Long.parseLong(type_value.toString()));
+			if(status != null && status != "")
+				accident.setStatus(Long.parseLong(status));
+			else
+				accident.setStatus(0L); //status em aberto
+				
 			dao.salvar(accident);
 
 			request.setAttribute("msgSucesso", "Acidente salvo com sucesso!");

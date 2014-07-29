@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.ProjectEnums.AccidentType;
 import exemplo3.dao.AccidentDAO;
 import exemplo3.model.Accident;
 import exemplo3.model.Mission;
@@ -47,6 +48,10 @@ public class EditarAcidenteController extends HttpServlet {
 			}
 
 			request.setAttribute("acidente", accident);
+			
+			AccidentType[] ac_types = AccidentType.values();
+			request.setAttribute("ac_types", ac_types);
+			
 			request.getRequestDispatcher("/views/admin/formularioAcidente.jsp")
 					.forward(request, response);
 		} catch (Exception e) {

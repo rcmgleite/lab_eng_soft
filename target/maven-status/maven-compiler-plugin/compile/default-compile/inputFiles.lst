@@ -18,6 +18,7 @@
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/EditarTipoRecursoController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/NovoRecursoController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/model/Mission.java
+/home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/utils/AccidentStatusManager.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/SalvarTipoRecursoController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/accidents/NovoAcidenteController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/missions/EditarMissaoController.java

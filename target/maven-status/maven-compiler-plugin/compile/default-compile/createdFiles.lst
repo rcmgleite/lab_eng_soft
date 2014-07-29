@@ -45,5 +45,6 @@ exemplo3/controller/users/EditarUsuarioController.class
 exemplo3/controller/accidents/EditarAcidenteController.class
 exemplo3/model/Mission.class
 exemplo3/model/Mission$1.class
+utils/AccidentStatusManager.class
 exemplo3/controller/recurso/NovoRecursoController.class
 exemplo3/controller/missions/ListarMissoesController.class
