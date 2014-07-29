@@ -1,12 +1,19 @@
 package exemplo3.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import utils.ProjectEnums;
 
@@ -41,6 +48,12 @@ public class User implements java.io.Serializable{
 	@Column(name="Role")
 	private Long role;
 
+	/* -- Relacionamentos -- */
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="chefeMissao")
+	private List<Mission> missions = new ArrayList<Mission>();
+	/* -- Relacionamentos -- */
+	
 	/*Transients*/
 	@Transient
 	private String roleAlias;
@@ -72,6 +85,14 @@ public class User implements java.io.Serializable{
 
 	public Long getRole() {
 		return role;
+	}
+
+	public List<Mission> getMissions() {
+		return missions;
+	}
+
+	public void setMissions(List<Mission> missions) {
+		this.missions = missions;
 	}
 
 	public void setRole(Long role) {

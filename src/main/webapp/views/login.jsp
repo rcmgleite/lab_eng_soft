@@ -1,7 +1,7 @@
 <%@include file="header.jsp"%>
 
 <div class="starter-template">
-	<h1>SVC</h1>
+	<h1>CMS</h1>
 </div>
 
 <div>

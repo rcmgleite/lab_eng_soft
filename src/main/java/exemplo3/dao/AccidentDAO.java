@@ -26,22 +26,24 @@ public class AccidentDAO {
 			return result;
 			
 		} catch (Exception e) {
+			em.clear();
 			return null;
 		}
 	}
 	
 	public void salvar(Accident accident) throws Exception {
 		try {
-			EntityTransaction tx = em.getTransaction();
+			EntityManager em_in = factory.createEntityManager();
+			EntityTransaction tx = em_in.getTransaction();
 			tx.begin();
 			if(accident.getId() == null)
-				em.persist(accident);
+				em_in.persist(accident);
 			else
-				em.merge(accident);
-			em.flush();
+				em_in.merge(accident);
+			em_in.flush();
 			tx.commit();
 			
-			em.clear();
+			em_in.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -64,6 +66,7 @@ public class AccidentDAO {
 			em.clear();
 		} catch (Exception e) {
 			e.printStackTrace();
+			em.clear();
 			throw e;
 		}
 	}
@@ -78,6 +81,7 @@ public class AccidentDAO {
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
+			em.clear();
 			throw e;
 		}
 	}

@@ -1,9 +1,6 @@
 <%@include file="header.jsp"%>
 <div class="container custom_table">
 	<div style="float: right">
-		<c:if test="${not empty msgSucesso}">
-			<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
-		</c:if>
 		<h2 class="list_title">Recursos</h2>
 		<table class="table table-striped" style="margin-left: 3%" >  
 	        <thead>  
@@ -31,7 +28,9 @@
 		
 			</tbody>  
 		</table>
-		
+		<c:if test="${not empty msgSucesso}">
+			<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
+		</c:if>
 		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novoRecurso" role="button">Cadastrar Recurso</a>
 	</div>
 </div>

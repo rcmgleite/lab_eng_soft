@@ -36,7 +36,12 @@ public class ListarMissoesController extends HttpServlet{
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			List<Mission> missions = dao.getMissions();
-		
+			
+			for(Mission mission: missions){
+				mission.setStatusAlias();
+				mission.setPriorityAlias();
+			}
+			
 			request.setAttribute("missions", missions);
 			request.getRequestDispatcher("/views/admin/listarMissoes.jsp").forward(request, response);
 		} catch (Exception e) {

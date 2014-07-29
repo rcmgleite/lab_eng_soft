@@ -32,17 +32,17 @@ public class RemoverTipoRecursoController extends HttpServlet {
 	private void doService(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			/*veio na query-string na requesição*/
 			Long pk = Long.parseLong(request.getParameter("id"));
 			dao.removerTipoRecurso(pk);
 			
-			request.setAttribute("msgSucesso", "Acidente removido com sucesso!");
+			request.setAttribute("msgSucesso", "Tipo de recurso removido com sucesso!");
 			request.getRequestDispatcher("/listarTiposDeRecursos").forward(request,
 					response);
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("erro", e.getMessage());
-			request.getRequestDispatcher("/views/erro.jsp")
+			request.setAttribute("errorMsg", "Erro ao deletar item selecionado. Ele está sendo usado"
+					+ " por algum Recurso");
+			request.getRequestDispatcher("/listarTiposDeRecursos")
 			.forward(request, response);
 		}
 	}

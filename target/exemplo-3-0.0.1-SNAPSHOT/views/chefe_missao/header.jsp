@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">SVC</a>
+          <a class="navbar-brand" href="#">CMS</a>
         </div>
         <div class="collapse navbar-collapse">
           <a class="navbar-brand" href="#" style="float:right">Chefe de Missão</a>

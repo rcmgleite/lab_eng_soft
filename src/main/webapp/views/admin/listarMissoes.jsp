@@ -8,11 +8,12 @@
 		<table class="table table-striped" style="margin-left: 3%" >  
 	        <thead>  
 	          <tr>  
-	            <th  style="width: 20%;">ID</th>  
+	            <th  style="width: 5%;">ID</th>  
 	            <th  style="width: 20%;">Descrição</th>  
 	            <th  style="width: 20%;">Status</th>  
 	            <th  style="width: 20%;">Prioridade</th>  
 	            <th  style="width: 20%;">ID Acidente</th>  
+	            <th  style="width: 20%;">Chefe de missão</th>  
 	          </tr>  
 	        </thead>  
 	        <tbody>  
@@ -20,11 +21,17 @@
 			          <tr>  
 			            <td class="text-left">${mission.id}</td>  
 			            <td class="text-left">${mission.description}</td>  
-			            <td class="text-left">${mission.status}</td>  
-			            <td class="text-left">${mission.priority}</td>  
+			            <td class="text-left">${mission.statusAlias}</td>  
+			            <td class="text-left">${mission.priorityAlias}</td>  
 			            <td class="text-left">${mission.accident.id}</td>  
+			            <c:if test="${not empty mission.chefeMissao}">
+			            	<td class="text-left">${mission.chefeMissao.username}</td>
+			            </c:if>
+			            <c:if test="${empty mission.chefeMissao}">
+			            	<td class="text-left">Não alocada</td>
+			            </c:if>
+			              
 			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharMissao?id=${mission.id}">Editar</a></td>
-			            <td class="text-left"><a href="${pageContext.request.contextPath}/removerMissao?id=${mission.id}">Remover</a></td>  
 			          </tr>				
 				</c:forEach>
 		

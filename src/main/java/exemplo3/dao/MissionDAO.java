@@ -21,27 +21,31 @@ public class MissionDAO {
 			TypedQuery<Mission> q = em.createQuery(
 					"from Mission", Mission.class);
 			
-			return q.getResultList();
+			List<Mission> result = q.getResultList();
+			em.clear();
+			return result;
 			
 		} catch (Exception e) {
+			em.clear();
 			return null;
 		}
 	}
 	
 	public void remover(Long pk) throws Exception {
 		try {
-			EntityTransaction tx = em.getTransaction();
+			EntityManager em_in = factory.createEntityManager();
+			EntityTransaction tx = em_in.getTransaction();
 			tx.begin();
 			
-			TypedQuery<Mission> q = em.createQuery(
+			TypedQuery<Mission> q = em_in.createQuery(
 					"from Mission where id = " + pk,
 					Mission.class);
-			em.remove(q.getSingleResult());
+			em_in.remove(q.getSingleResult());
 			
-			em.flush();
+			em_in.flush();
 			tx.commit();
 			
-			em.clear();
+			em_in.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -50,18 +54,34 @@ public class MissionDAO {
 
 	public void salvar(Mission mission) throws Exception {
 		try {
-			EntityTransaction tx = em.getTransaction();
+			EntityManager em_in = factory.createEntityManager();
+			EntityTransaction tx = em_in.getTransaction();
 			tx.begin();
 			if(mission.getId() == null)
-				em.persist(mission);
+				em_in.persist(mission);
 			else
-				em.merge(mission);
-			em.flush();
+				em_in.merge(mission);
+			em_in.flush();
 			tx.commit();
 			
-			em.clear();
+			em_in.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	public Mission findMissionByPrimaryKey(Long pk) throws Exception {
+		try {
+			TypedQuery<Mission> q = em.createQuery(
+					"from Mission where id = " + pk,
+					Mission.class);
+			Mission result = q.getSingleResult(); 
+			em.clear();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.clear();
 			throw e;
 		}
 	}

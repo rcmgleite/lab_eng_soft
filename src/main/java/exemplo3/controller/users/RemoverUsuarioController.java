@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.RemoveCascade;
+import exemplo3.dao.MissionDAO;
 import exemplo3.dao.UserDAO;
+import exemplo3.model.User;
 
 @WebServlet("/removerUsuario")
 public class RemoverUsuarioController extends HttpServlet {
@@ -17,8 +20,9 @@ public class RemoverUsuarioController extends HttpServlet {
 	public RemoverUsuarioController() {
 	}
 
-	private UserDAO dao = new UserDAO();
-
+	private UserDAO uDAO = new UserDAO();
+	private MissionDAO mDAO = new MissionDAO();
+	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		doService(request, response);
@@ -32,9 +36,18 @@ public class RemoverUsuarioController extends HttpServlet {
 	private void doService(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			/*veio na query-string na requesição*/
 			Long pk = Long.parseLong(request.getParameter("id"));
-			dao.remover(pk);
+			User user = uDAO.findByPrimaryKey(pk);
+			/**
+			 *	Antes de remover usuário, caso ele seja um chefe de missão, precisa desvincular
+			 *	as missões do mesmo. 
+			 **/
+			RemoveCascade.deallocateMissionsFromUser(user, mDAO, uDAO);
+			
+			/**
+			 * 	No final pode-se remover o usuário sem problemas.
+			 **/
+			uDAO.remover(pk);
 			
 			request.setAttribute("msgSucesso", "Usuario removido com sucesso!");
 			request.getRequestDispatcher("/listarUsuarios").forward(request,

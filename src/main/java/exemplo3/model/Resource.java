@@ -32,12 +32,6 @@ public class Resource  implements java.io.Serializable{
 	@Column(name="idRecurso")
 	private Long id;
 	
-//	/** 
-//	 * 	FIXME - quantidade não faz sentido. será um bool falando se o recurso esta alocado ou nao.
-//	 **/
-//	@Column(name="Quantidade")
-//	private Long quantity;
-	
 	/* -- Relacionamentos -- */
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -58,14 +52,6 @@ public class Resource  implements java.io.Serializable{
 		this.id = id;
 	}
 
-//	public Long getQuantity() {
-//		return quantity;
-//	}
-//
-//	public void setQuantity(Long quantity) {
-//		this.quantity = quantity;
-//	}
-	
 	public Mission getMission() {
 		return mission;
 	}

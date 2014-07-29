@@ -1,7 +1,7 @@
 <%@include file="header.jsp"%>
 <br>
 <div class="container custom_table">
-	<h2 class="list_title">Novo Usuário</h2>
+	<h2 class="list_title">Cadastro Tipo de Recurso</h2>
 	<form role="form"
 		action="${pageContext.request.contextPath}/salvarTipoRecurso" method="post">
 		<div class="form-group">

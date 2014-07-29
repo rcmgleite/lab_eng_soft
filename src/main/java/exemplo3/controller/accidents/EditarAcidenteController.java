@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import exemplo3.dao.AccidentDAO;
 import exemplo3.model.Accident;
+import exemplo3.model.Mission;
 
 @WebServlet("/detalharAcidente")
 public class EditarAcidenteController extends HttpServlet {
@@ -39,6 +40,11 @@ public class EditarAcidenteController extends HttpServlet {
 			 **/
 			Long pk = Long.parseLong(request.getParameter("id"));
 			Accident accident = dao.findByPrimaryKey(pk);
+			
+			for(Mission mission: accident.getMissions()){
+				mission.setPriorityAlias();
+				mission.setStatusAlias();
+			}
 
 			request.setAttribute("acidente", accident);
 			request.getRequestDispatcher("/views/admin/formularioAcidente.jsp")

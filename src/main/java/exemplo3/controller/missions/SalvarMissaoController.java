@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.ProjectEnums;
 import exemplo3.dao.AccidentDAO;
 import exemplo3.dao.MissionDAO;
 import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.UserDAO;
 import exemplo3.model.Accident;
 import exemplo3.model.Mission;
 import exemplo3.model.Resource;
+import exemplo3.model.User;
 
 @WebServlet("/salvarMissao")
 public class SalvarMissaoController extends HttpServlet {
@@ -26,6 +29,7 @@ public class SalvarMissaoController extends HttpServlet {
 	private MissionDAO dao = new MissionDAO();
 	private AccidentDAO acDao = new AccidentDAO();
 	private RecursoDAO recDAO = new RecursoDAO();
+	private UserDAO uDAO = new UserDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -43,16 +47,21 @@ public class SalvarMissaoController extends HttpServlet {
 			String id = request.getParameter("id");
 			String id_accident = request.getParameter("id_acidente");
 			String description = request.getParameter("description");
-			String status = request.getParameter("status");
-			String priority = request.getParameter("priority");
+			String status = request.getParameter("selected_status");
+			String priority = request.getParameter("selected_priority");
+			String missionHeadId = request.getParameter("selected_mission_head");
 			
 			Mission mission = new Mission();
 			if (id != null && !id.equals("") ){
 				mission.setId(Long.parseLong(id));
 			}
 			mission.setDescription(description);
-			mission.setPriority(Long.parseLong(priority));
-			mission.setStatus(Long.parseLong(status));
+			
+			Integer priorityValue = ProjectEnums.MissionPriority.valueOf(priority).ordinal(); 
+			mission.setPriority(Long.parseLong(priorityValue.toString()));
+
+			Integer statusValue = ProjectEnums.MissionStatus.valueOf(status).ordinal();
+			mission.setStatus(Long.parseLong(statusValue.toString()));
 			
 			String[] selected_resources = request.getParameterValues("selected_resources");
 			String selected_resources_str = "";
@@ -74,6 +83,9 @@ public class SalvarMissaoController extends HttpServlet {
 			Accident accident = acDao.findByPrimaryKey(Long.parseLong(id_accident));
 			mission.setAccident(accident);
 			
+			User missionHead = uDAO.findByPrimaryKey(Long.parseLong(missionHeadId));
+			mission.setChefeMissao(missionHead);
+			
 			dao.salvar(mission);
 
 			/**
@@ -93,8 +105,6 @@ public class SalvarMissaoController extends HttpServlet {
 			request.setAttribute("erro", e.getMessage());
 			request.getRequestDispatcher("/views/erro.jsp")
 			.forward(request, response);
-
 		}
-
 	}
 }

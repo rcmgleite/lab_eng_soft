@@ -9,14 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.ProjectEnums;
+import utils.ProjectEnums.MissionPriority;
+import utils.ProjectEnums.MissionStatus;
 import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.UserDAO;
 import exemplo3.model.Resource;
+import exemplo3.model.User;
 
 @WebServlet("/novaMissao")
 public class NovaMissaoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private RecursoDAO dao = new RecursoDAO();
+	private UserDAO uDAO = new UserDAO();
 	
 	public NovaMissaoController () {
 	}
@@ -38,8 +44,17 @@ public class NovaMissaoController extends HttpServlet {
 			request.setAttribute("id_acidente", id_acidente);
 			
 			List<Resource> resources = dao.getResourcesWhere("mission.id = null");
-			
 			request.setAttribute("resources", resources);
+			
+			MissionStatus[] mStatus = ProjectEnums.MissionStatus.values();
+			MissionPriority[] mPriority = ProjectEnums.MissionPriority.values();
+			
+			request.setAttribute("mStatus", mStatus);
+			request.setAttribute("mPriority", mPriority);
+			
+			List<User> missionHeads = uDAO.getUsersWhere("role = " + ProjectEnums.UserRoles.CHEFE_MISSAO.ordinal());
+			request.setAttribute("missionHeads", missionHeads);
+			
 			request.getRequestDispatcher("/views/admin/formularioMissao.jsp")
 					.forward(request, response);
 		} catch (Exception e) {

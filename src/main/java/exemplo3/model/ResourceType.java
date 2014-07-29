@@ -45,7 +45,7 @@ public class ResourceType implements java.io.Serializable{
 
 	/* -- Relacionamentos -- */
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="resourceType")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="resourceType")
 	List<Resource> resources = new ArrayList<Resource>();
 	
 	/* -- Relacionamentos -- */

@@ -26,7 +26,7 @@
 			</tbody>  
 		</table>
 		
-		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/views/admin/formularioUsuario.jsp" role="button">Novo Usuário</a>
+		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novoUsuario" role="button">Novo Usuário</a>
 		<c:if test="${not empty msgSucesso}">
 			<span class="label label-success success_msg" style="font-size: 14px;">${msgSucesso}</span>
 		</c:if>

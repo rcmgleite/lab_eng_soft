@@ -27,6 +27,7 @@ public class UserDAO {
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
+			em.clear();
 			throw e;
 		}
 	}
@@ -41,6 +42,22 @@ public class UserDAO {
 			return result;
 			
 		} catch (Exception e) {
+			em.clear();
+			return null;
+		}
+	}
+	
+	public List<User> getUsersWhere(String where){
+		try {
+			TypedQuery<User> q = em.createQuery(
+					"from User where " + where, User.class);
+			
+			List<User> result = q.getResultList();
+			em.clear();
+			return result;
+			
+		} catch (Exception e) {
+			em.clear();
 			return null;
 		}
 	}
@@ -55,24 +72,26 @@ public class UserDAO {
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
+			em.clear();
 			throw e;
 		}
 	}
 
 	public void remover(Long pk) throws Exception {
 		try {
-			EntityTransaction tx = em.getTransaction();
+			EntityManager em_in = factory.createEntityManager();
+			EntityTransaction tx = em_in.getTransaction();
 			tx.begin();
 			
-			TypedQuery<User> q = em.createQuery(
+			TypedQuery<User> q = em_in.createQuery(
 					"from User where id = " + pk,
 					User.class);
-			em.remove(q.getSingleResult());
+			em_in.remove(q.getSingleResult());
 			
-			em.flush();
+			em_in.flush();
 			tx.commit();
 			
-			em.clear();
+			em_in.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -81,16 +100,17 @@ public class UserDAO {
 
 	public void salvar(User usuario) throws Exception {
 		try {
-			EntityTransaction tx = em.getTransaction();
+			EntityManager em_in = factory.createEntityManager();
+			EntityTransaction tx = em_in.getTransaction();
 			tx.begin();
 			if(usuario.getId() == null)
-				em.persist(usuario);
+				em_in.persist(usuario);
 			else
-				em.merge(usuario);
-			em.flush();
+				em_in.merge(usuario);
+			em_in.flush();
 			tx.commit();
 			
-			em.clear();
+			em_in.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

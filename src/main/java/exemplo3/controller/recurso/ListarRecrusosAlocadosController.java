@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import exemplo3.dao.RecursoDAO;
 import exemplo3.model.Resource;
 
-@WebServlet("/listarRecursosAlocados")
+@WebServlet("/listarRecursos")
 public class ListarRecrusosAlocadosController extends HttpServlet{
 
 	/**

@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.ProjectEnums;
+import utils.ProjectEnums.UserRoles;
+
 @WebServlet("/novoUsuario")
 public class NovoUsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,6 +31,9 @@ public class NovoUsuarioController extends HttpServlet {
 	private void doService(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
+			UserRoles[] roles = ProjectEnums.UserRoles.values();
+			request.setAttribute("roles", roles);
+			
 			request.getRequestDispatcher("/views/admin/formularioUsuario.jsp")
 					.forward(request, response);
 		} catch (Exception e) {
