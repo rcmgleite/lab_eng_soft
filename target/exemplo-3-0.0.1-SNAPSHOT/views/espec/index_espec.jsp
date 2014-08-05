@@ -1,15 +1,13 @@
 <%@include file="header.jsp"%>
 <!-- 
 <div class="starter-template">
-	<h1>Especialista</h1>
+	<h1>Administrador</h1>
 </div>
 -->
-<div class="row" style="float: left; margin-top: 2%">
-	<div class="span2">
-		<ul class="nav nav-pills nav-stacked">
-			<li><a href="#">Missões </a></li>
-		</ul>
-	</div>
-</div>
 
+<!-- TODO -->
+<div class="centralize_msg">
+<h2> Bem vindo à página inicial do CMS </h2>
+<p> Navegue pelo sistema utilizando o menu lateral. </p>
+</div>
 <%@include file="footer.jsp"%>

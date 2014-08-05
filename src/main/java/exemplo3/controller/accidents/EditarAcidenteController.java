@@ -52,8 +52,7 @@ public class EditarAcidenteController extends HttpServlet {
 			AccidentType[] ac_types = AccidentType.values();
 			request.setAttribute("ac_types", ac_types);
 			
-			request.getRequestDispatcher("/views/admin/formularioAcidente.jsp")
-					.forward(request, response);
+			this.selectDispatcher(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("erro", e.getMessage());
@@ -61,8 +60,31 @@ public class EditarAcidenteController extends HttpServlet {
 			.forward(request, response);
 
 		}
-
 	}
-
+	private void selectDispatcher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String strRole = request.getSession().getAttribute("role").toString();
+		if(strRole != null && strRole != ""){
+			Integer role = Integer.parseInt(strRole);
+			switch (role) {
+			case 0:
+				request.setAttribute("role", "0");
+				request.getRequestDispatcher("/views/admin/formularioAcidente.jsp").forward(request, response);
+				break;
+				
+			case 2:
+				request.setAttribute("role", "2");
+				request.getRequestDispatcher("/views/espec/formularioAcidente.jsp").forward(request, response);
+				break;
+	
+			default:
+				request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+				System.out.println("Erro");
+				break;
+			}
+		}
+		else{
+			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+		}
+	}
 }
 

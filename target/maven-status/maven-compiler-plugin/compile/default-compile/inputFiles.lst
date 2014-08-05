@@ -31,6 +31,7 @@
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/model/Accident.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/dao/GenericDao.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/utils/RemoveCascade.java
+/home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/report/ReportController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/accidents/RemoverAcidenteController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/utils/SessionManager.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/dao/UserDAO.java

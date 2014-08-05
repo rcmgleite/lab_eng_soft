@@ -58,7 +58,7 @@
 				<li><a href="${pageContext.request.contextPath}/listarMissoes">Missões </a></li>
 				<li><a href="${pageContext.request.contextPath}/listarRecursos">Recursos</a></li>
 				<li><a href="${pageContext.request.contextPath}/listarTiposDeRecursos">Tipos de Recurso</a></li>
-				<li><a href="#">Relatórios</a></li>
+				<li><a href="${pageContext.request.contextPath}/relatorios">Relatórios</a></li>
 			</ul>
 		</div>
 	</div>
