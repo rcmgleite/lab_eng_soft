@@ -50,9 +50,25 @@
 			</select> 
 		</div>
 		
+		<div class="form-group">
+			<label for="descript">URL CMS</label> 
+			<input
+				type="text" class="form-control" id="_urlCMS" name="_urlCMS"
+				placeholder="url..."
+				value="${acidente.urlCMS}"/>
+		</div>
+		<c:if test="${not empty acidente.urlCMS}">
+		<div class="c_video">
+			<iframe width="600" height="400" src="${acidente.urlCMS}" frameborder="0" allowfullscreen></iframe>
+		</div>
+		</c:if>
+		
 		<input type="hidden" name="id" id="id" value="${acidente.id}"/>
 		<input type="hidden" name="_status" id="_status" value="${acidente.status}"/>
-		<button type="submit" class="btn btn-primary btn-lg" style="float: right">Salvar Alterações</button>
+		<button type="submit" 
+		class="btn btn-primary btn-lg" 
+		style="float: right"
+		>Salvar Alterações</button>
 	</form>
 
 	<c:if test="${not empty acidente}">
@@ -93,6 +109,7 @@
 	</c:if>
 	<c:if test="${not empty msgSucesso}">
 		<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
-	</c:if>	
+	</c:if>
+	
 </div>
 <%@include file="../footer.jsp"%>

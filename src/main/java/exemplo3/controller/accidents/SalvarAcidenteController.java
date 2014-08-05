@@ -43,6 +43,7 @@ public class SalvarAcidenteController extends HttpServlet {
 			String description = request.getParameter("_descricao");
 			String type = request.getParameter("selected_type");
 			String status = request.getParameter("_status");
+			String urlCMS = request.getParameter("_urlCMS");
 			
 			Accident accident = new Accident();
 			if (id != null && !id.equals("") ){
@@ -54,6 +55,7 @@ public class SalvarAcidenteController extends HttpServlet {
 			accident.setLocation(location);
 			accident.setNumVictims(Long.parseLong(numVictims));
 			accident.setDescription(description);
+			accident.setUrlCMS(urlCMS);
 			
 			Integer type_value = ProjectEnums.AccidentType.valueOf(type).ordinal();
 			accident.setType(Long.parseLong(type_value.toString()));

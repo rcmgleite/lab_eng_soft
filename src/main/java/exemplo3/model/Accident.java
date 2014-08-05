@@ -59,6 +59,9 @@ public class Accident implements java.io.Serializable {
 	@Column(name="status")
 	private Long status;
 	
+	@Column(name="urlCMS")
+	private String urlCMS;
+	
 	/* -- Relacionamentos -- */
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "accident")
@@ -129,6 +132,14 @@ public class Accident implements java.io.Serializable {
 
 	public void setStatus(Long status) {
 		this.status = status;
+	}
+
+	public String getUrlCMS() {
+		return urlCMS;
+	}
+
+	public void setUrlCMS(String urlCMS) {
+		this.urlCMS = urlCMS;
 	}
 
 	public List<Mission> getMissions() {

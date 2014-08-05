@@ -28,3 +28,14 @@
 	width: 85%
 }
 
+.c_video{
+	width: 854;
+	height: 510;
+}
+
+.btn_report{
+	width: 200px;
+	height: 100px;
+	font-size: 20px;
+	margin: 5px;
+}
