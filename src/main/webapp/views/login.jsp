@@ -21,9 +21,10 @@
 				placeholder="Password" />
 		</div>
 		<div>
-			<c:if test="${not empty erro}">
-				<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
+			<c:if test="${not empty errorMsg}">
+				<span class="label label-danger" style="font-size: 14px;">${errorMsg}</span>
 			</c:if>
+			
 		</div>
 		
 		<button style="float:right" type="submit" class="btn btn-primary btn-lg">Login</button>

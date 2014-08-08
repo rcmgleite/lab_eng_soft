@@ -30,6 +30,21 @@ public class MissionDAO {
 			return null;
 		}
 	}
+
+	public List<Mission> getMissionsWhere(String where){
+		try {
+			TypedQuery<Mission> q = em.createQuery(
+					"from Mission where " + where, Mission.class);
+			
+			List<Mission> result = q.getResultList();
+			em.clear();
+			return result;
+			
+		} catch (Exception e) {
+			em.clear();
+			return null;
+		}
+	}
 	
 	public void remover(Long pk) throws Exception {
 		try {

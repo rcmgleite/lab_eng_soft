@@ -76,6 +76,21 @@ public class UserDAO {
 			throw e;
 		}
 	}
+	
+	public User getSingleUserWhere(String where) throws Exception {
+		try {
+			TypedQuery<User> q = em.createQuery(
+					"from User where " + where,
+					User.class);
+			User result = q.getSingleResult(); 
+			em.clear();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.clear();
+			throw e;
+		}
+	}
 
 	public void remover(Long pk) throws Exception {
 		try {

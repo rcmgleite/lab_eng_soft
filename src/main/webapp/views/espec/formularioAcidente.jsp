@@ -8,33 +8,33 @@
 			<input
 				type="date" class="form-control" id="_date" name="_date"
 				pattern="AAAA-MM-DD"
-				value="${acidente.date}" disabled/>
+				value="${acidente.date}" readonly="readonly"/>
 		</div>
 		<div class="form-group">
 			<label for="location">Localização</label> 
 			<input
 				type="text" class="form-control" id="_localizacao" name="_localizacao"
 				placeholder="Localização..."
-				value="${acidente.location}" disabled/>
+				value="${acidente.location}" readonly="readonly"/>
 		</div>
 		<div class="form-group">
 			<label for="numVic">Número de vítimas</label> 
 			<input
 				type="text" class="form-control" id="_nVitimas" name="_nVitimas"
 				placeholder="Número de vítimas..."
-				value="${acidente.numVictims}" disabled/>
+				value="${acidente.numVictims}" readonly="readonly"/>
 		</div>
 		<div class="form-group">
 			<label for="descript">Descrição</label> 
 			<input
 				type="text" class="form-control" id="_descricao" name="_descricao"
 				placeholder="Descrição..."
-				value="${acidente.description}" disabled/>
+				value="${acidente.description}" readonly="readonly"/>
 		</div>
 		
 		<div class="form-group">
 			<label for="permissao">Tipo</label>
-			<select name="selected_type" disabled>
+			<select name="selected_type">
   				<c:forEach items="${ac_types}" var="type">
 						<c:if test="${acidente.type == type.ordinal()}">
 						    <option selected="selected" value="${type}">
@@ -42,7 +42,7 @@
 						    </option>
 						</c:if>  									    
 						<c:if test="${acidente.type != type.ordinal()}">
-						    <option value="${type}">
+						    <option value="${type}" disabled>
 						        ${type}
 						    </option>
 						</c:if>  		
@@ -55,7 +55,7 @@
 			<input
 				type="text" class="form-control" id="_urlCMS" name="_urlCMS"
 				placeholder="url..."
-				value="${acidente.urlCMS}" disabled/>
+				value="${acidente.urlCMS}" readonly="readonly"/>
 		</div>
 		<c:if test="${not empty acidente.urlCMS}">
 		<div class="c_video">

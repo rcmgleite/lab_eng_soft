@@ -112,13 +112,43 @@ public class SalvarMissaoController extends HttpServlet {
 			
 			request.setAttribute("msgSucesso",  "Missão salva com sucesso!");
 			
-			request.getRequestDispatcher("/detalharAcidente?id=" + id_accident).forward(request,
-					response);
+			this.selectDispatcher(request, response, id_accident);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("erro", e.getMessage());
 			request.getRequestDispatcher("/views/erro.jsp")
 			.forward(request, response);
+		}
+	}
+	
+	private void selectDispatcher(HttpServletRequest request, HttpServletResponse response, String id_accident) throws ServletException, IOException{
+		String strRole = request.getSession().getAttribute("role").toString();
+		if(strRole != null && strRole != ""){
+			Integer role = Integer.parseInt(strRole);
+			switch (role) {
+			case 0:
+				request.setAttribute("role", "0");
+				request.getRequestDispatcher("/detalharAcidente?id=" + id_accident).forward(request, response);
+				break;
+				
+			case 2:
+				request.setAttribute("role", "2");
+				request.getRequestDispatcher("/listarMissoes").forward(request, response);
+				break;
+				
+			case 3:
+				request.setAttribute("role", "3");
+				request.getRequestDispatcher("/listarMissoes").forward(request, response);
+				break;
+
+			default:
+				request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+				System.out.println("Erro");
+				break;
+			}
+		}
+		else{
+			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 		}
 	}
 }

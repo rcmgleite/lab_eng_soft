@@ -51,6 +51,7 @@ public class LoginController extends HttpServlet {
 				this.selectDispatcher(request, response, role);
 			}
 			else{
+				request.setAttribute("errorMsg", "Usuário e/ou Senha inválidos");
 				request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 			}	
 		}

@@ -77,7 +77,7 @@ public class NovaMissaoController extends HttpServlet {
 				request.setAttribute("role", "2");
 				request.getRequestDispatcher("/views/espec/formularioMissao.jsp").forward(request, response);
 				break;
-	
+
 			default:
 				request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 				System.out.println("Erro");
