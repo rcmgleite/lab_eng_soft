@@ -67,16 +67,39 @@ public class SalvarAcidenteController extends HttpServlet {
 			dao.salvar(accident);
 
 			request.setAttribute("msgSucesso", "Acidente salvo com sucesso!");
-			request.getRequestDispatcher("/listarAcidentes").forward(request,
-					response);
+			request.getRequestDispatcher("/listarAcidentes").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("erro", e.getMessage());
-			request.getRequestDispatcher("/views/erro.jsp")
-			.forward(request, response);
-
+			//campos não validados... deve voltar para o formuário
+			request.setAttribute("errorMsg", "Verifique se os campos foram preenchidos corretamente.");
+			this.selectDispatcher(request, response);
 		}
-
+	}
+	
+	private void selectDispatcher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String strRole = request.getSession().getAttribute("role").toString();
+		if(strRole != null && strRole != ""){
+			Integer role = Integer.parseInt(strRole);
+			switch (role) {
+			case 0:
+				request.setAttribute("role", "0");
+				request.getRequestDispatcher("/novoAcidente").forward(request, response);
+				break;
+	
+			case 1:
+				request.setAttribute("role", "1");
+				request.getRequestDispatcher("/novoAcidente").forward(request, response);
+				break;
+	
+			default:
+				request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+				System.out.println("Erro");
+				break;
+			}
+		}
+		else{
+			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+		}
 	}
 }
 

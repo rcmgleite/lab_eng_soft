@@ -177,16 +177,16 @@ public class Accident implements java.io.Serializable {
 	public void setStatusAlias() {
 		ProjectEnums.AccidentType _type = ProjectEnums.getTypeByInt(Integer.parseInt(this.type.toString()));
 		switch(_type){
-			case VHEICLE_VHEICLE_COLLISION:
+			case VEHICLE_VEHICLE_COLLISION:
 				this.typeAlias = "Colisão entre veículos";
 				break;
-			case VHEICLE_OBSTACLE_COLLISION:
+			case VEHICLE_OBSTACLE_COLLISION:
 				this.typeAlias = "Colisão entre veículo e obstáculo";
 				break;
 			case RUN_OVER:
 				this.typeAlias = "Atropelamento";
 				break;
-			case BROKEN_VHEICLE:
+			case BROKEN_VEHICLE:
 				this.typeAlias = "Veículo quebrado";
 				break;
 			case ROLLOVER:

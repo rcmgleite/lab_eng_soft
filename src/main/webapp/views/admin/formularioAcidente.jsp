@@ -110,6 +110,9 @@
 	<c:if test="${not empty msgSucesso}">
 		<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
 	</c:if>
+	<c:if test="${not empty errorMsg}">
+		<span class="label label-danger" style="font-size: 14px;">${errorMsg}</span>
+	</c:if>
 	
 </div>
 <%@include file="../footer.jsp"%>

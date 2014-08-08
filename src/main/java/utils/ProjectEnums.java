@@ -7,7 +7,7 @@ public class ProjectEnums {
 	}
 	
 	public static enum AccidentType{
-		VHEICLE_VHEICLE_COLLISION, VHEICLE_OBSTACLE_COLLISION, RUN_OVER, BROKEN_VHEICLE, ROLLOVER
+		VEHICLE_VEHICLE_COLLISION, VEHICLE_OBSTACLE_COLLISION, RUN_OVER, BROKEN_VEHICLE, ROLLOVER
 	}
 	
 	public static enum UserRoles{
@@ -38,13 +38,13 @@ public class ProjectEnums {
 	public static AccidentType getTypeByInt(Integer index){
 		switch(index){
 		case 0:
-			return AccidentType.VHEICLE_VHEICLE_COLLISION;
+			return AccidentType.VEHICLE_VEHICLE_COLLISION;
 		case 1:
-			return AccidentType.VHEICLE_OBSTACLE_COLLISION;
+			return AccidentType.VEHICLE_OBSTACLE_COLLISION;
 		case 2:
 			return AccidentType.RUN_OVER;
 		case 3:
-			return AccidentType.BROKEN_VHEICLE;
+			return AccidentType.BROKEN_VEHICLE;
 		case 4:
 			return AccidentType.ROLLOVER;
 		default:

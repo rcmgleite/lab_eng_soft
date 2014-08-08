@@ -10,6 +10,7 @@ exemplo3/controller/accidents/ListarAcidentesController.class
 exemplo3/model/User$1.class
 utils/ProjectEnums$MissionPriority.class
 exemplo3/listeners/SessionListener.class
+utils/Utils.class
 exemplo3/controller/users/SalvarUsuarioController.class
 exemplo3/controller/recurso/ListarTiposRecursosController.class
 utils/RemoveCascade.class
@@ -22,9 +23,9 @@ exemplo3/controller/accidents/EditarAcidenteController.class
 utils/SessionManager.class
 exemplo3/controller/missions/NovaMissaoController.class
 utils/ProjectEnums.class
+utils/ProjectEnums$AccidentStatus.class
 exemplo3/controller/users/ListarUsuariosController.class
 exemplo3/controller/missions/EditarMissaoController.class
-utils/ProjectEnums$AccidentStatus.class
 exemplo3/controller/users/RemoverUsuarioController.class
 exemplo3/controller/recurso/SalvarRecursoController.class
 exemplo3/controller/recurso/SalvarTipoRecursoController.class
