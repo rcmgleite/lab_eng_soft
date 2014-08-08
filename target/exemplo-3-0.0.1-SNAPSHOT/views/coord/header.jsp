@@ -1,4 +1,6 @@
+<%@page import="utils.SessionManager"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%
 	if(session == null || session.getAttribute("role") == null || 
 		!session.getAttribute("role").toString().equals("1"))
@@ -16,6 +18,7 @@
     <!-- Bootstrap -->
     <link href="/svc/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/svc/css/starter-template.css" rel="stylesheet">
+	<link href="/svc/css/custom.css" rel="stylesheet">
 	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +28,6 @@
     <![endif]-->
   </head>
   <body>
-  <div class="container">
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -37,6 +39,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">CMS</a>
+          
         </div>
         <div class="collapse navbar-collapse">
           <a class="navbar-brand" href="#" style="float:right">Coordenador</a>
@@ -47,6 +50,14 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
+	<div class="row" style="float: left; margin-top: 2%; margin-left: 1%">
+		<div class="span2">
+			<ul class="nav nav-pills nav-stacked">
+				<li><a href="${pageContext.request.contextPath}/listarAcidentes">Acidentes</a></li>
+				<li><a href="${pageContext.request.contextPath}/listarRecursos">Recursos</a></li>
+				<li><a href="${pageContext.request.contextPath}/relatorios">Relatórios</a></li>
+			</ul>
+		</div>
+	</div>
 
       

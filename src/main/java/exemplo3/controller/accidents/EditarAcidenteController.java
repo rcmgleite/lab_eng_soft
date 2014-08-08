@@ -71,6 +71,11 @@ public class EditarAcidenteController extends HttpServlet {
 				request.getRequestDispatcher("/views/admin/formularioAcidente.jsp").forward(request, response);
 				break;
 				
+			case 1:
+				request.setAttribute("role", "1");
+				request.getRequestDispatcher("/views/coord/formularioAcidente.jsp").forward(request, response);
+				break;
+				
 			case 2:
 				request.setAttribute("role", "2");
 				request.getRequestDispatcher("/views/espec/formularioAcidente.jsp").forward(request, response);

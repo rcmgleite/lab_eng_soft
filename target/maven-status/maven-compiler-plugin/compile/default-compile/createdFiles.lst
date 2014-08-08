@@ -5,7 +5,6 @@ exemplo3/dao/MissionDAO.class
 exemplo3/controller/accidents/RemoverAcidenteController.class
 exemplo3/controller/recurso/NovoTipoRecursoController.class
 utils/ProjectEnums$MissionStatus.class
-exemplo3/controller/recurso/ListarRecrusosAlocadosController.class
 exemplo3/controller/recurso/EditarTipoRecursoController.class
 exemplo3/controller/accidents/ListarAcidentesController.class
 exemplo3/model/User$1.class
@@ -43,6 +42,7 @@ exemplo3/controller/accidents/SalvarAcidenteController.class
 exemplo3/model/ResourceType.class
 report/ReportController.class
 exemplo3/model/User.class
+exemplo3/controller/recurso/ListarRecrusosController.class
 exemplo3/model/Mission$1.class
 exemplo3/model/Mission.class
 exemplo3/controller/users/EditarUsuarioController.class

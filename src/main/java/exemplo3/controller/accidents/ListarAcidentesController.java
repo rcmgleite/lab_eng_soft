@@ -66,12 +66,18 @@ public class ListarAcidentesController extends HttpServlet{
 				request.setAttribute("role", "0");
 				request.getRequestDispatcher("/views/admin/listarAcidentes.jsp").forward(request, response);
 				break;
+	
+			case 1:
+				request.setAttribute("role", "1");
+				request.getRequestDispatcher("/views/coord/listarAcidentes.jsp").forward(request, response);
+				break;
+	
 				
 			case 2:
 				request.setAttribute("role", "2");
 				request.getRequestDispatcher("/views/espec/listarAcidentes.jsp").forward(request, response);
 				break;
-	
+
 			default:
 				request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 				System.out.println("Erro");

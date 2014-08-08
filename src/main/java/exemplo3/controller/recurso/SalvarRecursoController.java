@@ -1,6 +1,7 @@
 package exemplo3.controller.recurso;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +47,12 @@ public class SalvarRecursoController extends HttpServlet{
 			ResourceType rt = dao.getResourceTypeWhere("id = " + resourceTypeID);
 			
 			resource.setResourceType(rt);
-
+			
+			/*Para não perder a qual missão o recurso esta alocado mesmo quando mudarmos o tipo dele*/
+			List<Resource> rs = dao.getResourcesWhere("id = " + id);
+			if(rs != null && rs.size() != 0)
+				resource.setMission(rs.get(0).getMission());
+			
 			dao.salvarRecurso(resource);
 
 			request.setAttribute("msgSucesso", "Tipo de recurso salvo com sucesso!");
