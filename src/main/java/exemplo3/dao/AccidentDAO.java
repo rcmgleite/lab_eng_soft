@@ -85,4 +85,19 @@ public class AccidentDAO {
 			throw e;
 		}
 	}
+
+	public List<Accident> getAccidentsWhere(String where) throws Exception {
+		try {
+			TypedQuery<Accident> q = em.createQuery(
+					"from Accident where " + where,
+					Accident.class);
+			List <Accident> result = q.getResultList();
+			em.clear();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.clear();
+			throw e;
+		}
+	}
 }

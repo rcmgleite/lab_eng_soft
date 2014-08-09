@@ -1,6 +1,7 @@
 exemplo3/controller/LoginController.class
 exemplo3/controller/logoutController.class
 exemplo3/controller/missions/SalvarMissaoController.class
+exemplo3/dao/UtilsDAO.class
 exemplo3/dao/MissionDAO.class
 exemplo3/controller/accidents/RemoverAcidenteController.class
 exemplo3/controller/recurso/NovoTipoRecursoController.class
@@ -8,9 +9,9 @@ utils/ProjectEnums$MissionStatus.class
 exemplo3/controller/recurso/EditarTipoRecursoController.class
 exemplo3/controller/accidents/ListarAcidentesController.class
 exemplo3/model/User$1.class
+exemplo3/dao/GenericDAO.class
 utils/ProjectEnums$MissionPriority.class
 exemplo3/listeners/SessionListener.class
-utils/Utils.class
 exemplo3/controller/users/SalvarUsuarioController.class
 exemplo3/controller/recurso/ListarTiposRecursosController.class
 utils/RemoveCascade.class
@@ -31,12 +32,13 @@ exemplo3/controller/recurso/SalvarRecursoController.class
 exemplo3/controller/recurso/SalvarTipoRecursoController.class
 utils/ProjectEnums$AccidentType.class
 exemplo3/model/Resource.class
-exemplo3/dao/GenericDao.class
 exemplo3/dao/AccidentDAO.class
 exemplo3/controller/accidents/NovoAcidenteController.class
 exemplo3/controller/users/NovoUsuarioController.class
 exemplo3/dao/UserDAO.class
+exemplo3/controller/accidents/AccidentReportController.class
 exemplo3/controller/recurso/RemoverTipoRecursoController.class
+exemplo3/controller/missions/MissionReportController.class
 utils/ProjectEnums$UserRoles.class
 exemplo3/controller/missions/RemoverMissaoController.class
 exemplo3/controller/accidents/SalvarAcidenteController.class
