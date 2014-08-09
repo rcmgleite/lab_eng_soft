@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Recurso")
-public class Resource  implements java.io.Serializable{
+public class Resource  implements java.io.Serializable, IEntity{
 	
 	/**
 	 * 

@@ -1,8 +1,7 @@
 <%@include file="header.jsp"%>
 <br>
 <div class="container custom_table">
-	<h2 class="list_title">Relatório Missao</h2>
-	<h4>ID do acidente: ${id_acidente}</h4>
+	<h2 class="list_title">Relatório Missão</h2>
 	<form role="form"
 		action="${pageContext.request.contextPath}/relatorioMissoes" method="post">
 

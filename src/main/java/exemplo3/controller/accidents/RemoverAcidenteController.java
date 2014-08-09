@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import utils.RemoveCascade;
-import exemplo3.dao.AccidentDAO;
-import exemplo3.dao.MissionDAO;
-import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Accident;
 import exemplo3.model.Mission;
 
@@ -23,9 +21,10 @@ public class RemoverAcidenteController extends HttpServlet {
 	public RemoverAcidenteController() {
 	}
 
-	private AccidentDAO dao = new AccidentDAO();
-	private MissionDAO mDao = new MissionDAO();
-	private RecursoDAO rDao = new RecursoDAO();
+//	private AccidentDAO dao = new AccidentDAO();
+	private GenericDAO dao = new GenericDAO();
+//	private MissionDAO mDao = new MissionDAO();
+//	private RecursoDAO rDao = new RecursoDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -43,24 +42,24 @@ public class RemoverAcidenteController extends HttpServlet {
 			/*veio na query-string na requesição*/
 			Long pk = Long.parseLong(request.getParameter("id"));
 			
-			Accident accident = dao.findByPrimaryKey(pk);
+			Accident accident = dao.findByPrimaryKey(pk, Accident.class);
 			List<Mission> missions = accident.getMissions();
 			for(Mission mission: missions){
 				
 				/** 	
 				 * 	Primeiro desaloca os recursos para todas as missões dentro do acidente
 				 **/
-				RemoveCascade.deallocateResources(mission, mDao, rDao);
+				RemoveCascade.deallocateResources(mission, dao);
 				
 				/**
 				 *  Depois Deleta cada missão
 				 **/
-				mDao.remover(mission.getId());
+				dao.remover(mission.getId(), Mission.class);
 			}
 			/**
 			 *		Por fim, deleto o acidente.
 			 **/
-			dao.remover(pk);
+			dao.remover(pk, Accident.class);
 			
 			request.setAttribute("msgSucesso", "Acidente removido com sucesso!");
 			request.getRequestDispatcher("/listarAcidentes").forward(request,

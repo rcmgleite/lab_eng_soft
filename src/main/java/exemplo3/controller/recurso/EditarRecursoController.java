@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Resource;
 import exemplo3.model.ResourceType;
 
@@ -21,7 +21,8 @@ public class EditarRecursoController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -4025578345214393412L;
 	
-	private RecursoDAO dao = new RecursoDAO();
+//	private RecursoDAO dao = new RecursoDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -38,11 +39,11 @@ public class EditarRecursoController extends HttpServlet {
 		try {
 
 			Long pk = Long.parseLong(request.getParameter("id"));
-			Resource resource = dao.findResourceByPrimaryKey(pk);
+			Resource resource = dao.findByPrimaryKey(pk, Resource.class);
 
 			request.setAttribute("resource", resource);
 			
-			List<ResourceType> resourceTypes = dao.getTypeResources();
+			List<ResourceType> resourceTypes = dao.getList(ResourceType.class);
 			request.setAttribute("resourceTypes", resourceTypes);
 			
 			this.selectDispatcher(request, response);

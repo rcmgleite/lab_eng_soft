@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.ResourceType;
 
 @WebServlet("/listarTiposDeRecursos")
 public class ListarTiposRecursosController extends HttpServlet{
 
-	private RecursoDAO dao = new RecursoDAO();
+//	private RecursoDAO dao = new RecursoDAO();
+	private GenericDAO dao = new GenericDAO();
+	
 	/**
 	 * 
 	 */
@@ -34,7 +36,7 @@ public class ListarTiposRecursosController extends HttpServlet{
 	private void doService(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<ResourceType> resources = dao.getTypeResources();
+			List<ResourceType> resources = dao.getList(ResourceType.class);
 		
 			request.setAttribute("resources", resources);
 			request.getRequestDispatcher("/views/admin/listarTipoDeRecursos.jsp").forward(request, response);

@@ -3,13 +3,14 @@ package utils;
 import java.util.List;
 
 import utils.ProjectEnums.AccidentStatus;
-import exemplo3.dao.AccidentDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Accident;
 import exemplo3.model.Mission;
 
 public class AccidentStatusManager {
 	
-	private static AccidentDAO dao = new AccidentDAO();
+//	private static AccidentDAO dao = new AccidentDAO();
+	private static GenericDAO dao = new GenericDAO();
 	
 	private static Boolean hasToUpdateStatusToConcluded(Accident accident){
 		List<Mission> missions = accident.getMissions();
@@ -48,7 +49,7 @@ public class AccidentStatusManager {
 		try {
 			Integer _status = status.ordinal();
 			accident.setStatus(Long.parseLong(_status.toString()));
-			dao.salvar(accident);
+			dao.salvar(accident, Accident.class);
 		} catch (Exception e) {
 			// TODO fazer alguma coisa
 			e.printStackTrace();

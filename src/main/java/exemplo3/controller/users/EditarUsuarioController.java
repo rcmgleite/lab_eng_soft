@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import utils.ProjectEnums;
 import utils.ProjectEnums.UserRoles;
-import exemplo3.dao.UserDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.User;
 
 @WebServlet("/editarUsuario")
@@ -20,7 +20,8 @@ public class EditarUsuarioController extends HttpServlet {
 	public EditarUsuarioController() {
 	}
 
-	private UserDAO dao = new UserDAO();
+//	private UserDAO dao = new UserDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +40,7 @@ public class EditarUsuarioController extends HttpServlet {
 			 * 	Veio como parâmetro na URL da requesição
 			 **/
 			Long pk = Long.parseLong(request.getParameter("id"));
-			User usuario = dao.findByPrimaryKey(pk);
+			User usuario = dao.findByPrimaryKey(pk, User.class);
 
 			UserRoles[] roles = ProjectEnums.UserRoles.values();
 			

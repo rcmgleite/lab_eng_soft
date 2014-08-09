@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.ResourceType;
 
 @WebServlet("/novoRecurso")
 public class NovoRecursoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static RecursoDAO dao = new RecursoDAO();
+//	private static RecursoDAO dao = new RecursoDAO();
+	private static GenericDAO dao = new GenericDAO();
 	
 	public NovoRecursoController() {
 	}
@@ -35,7 +36,7 @@ public class NovoRecursoController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			
-			List<ResourceType> resourceTypes = dao.getTypeResources();
+			List<ResourceType> resourceTypes = dao.getList(ResourceType.class);
 			request.setAttribute("resourceTypes", resourceTypes);
 			 
 			this.selectDispatcher(request, response);

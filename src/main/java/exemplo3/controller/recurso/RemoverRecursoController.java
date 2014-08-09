@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.GenericDAO;
+import exemplo3.model.Resource;
 
 @WebServlet("/removerRecurso")
 public class RemoverRecursoController extends HttpServlet {
@@ -17,7 +18,8 @@ public class RemoverRecursoController extends HttpServlet {
 	public RemoverRecursoController() {
 	}
 
-	private RecursoDAO dao = new RecursoDAO();
+//	private RecursoDAO dao = new RecursoDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -33,7 +35,7 @@ public class RemoverRecursoController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Long pk = Long.parseLong(request.getParameter("id"));
-			dao.removerRecurso(pk);
+			dao.remover(pk, Resource.class);
 			
 			request.setAttribute("msgSucesso", "Recurso removido com sucesso!");
 			request.getRequestDispatcher("/listarRecursos").forward(request,

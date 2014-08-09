@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import utils.ProjectEnums;
-import exemplo3.dao.UserDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.User;
 
 @WebServlet("/salvarUsuario")
@@ -19,7 +19,8 @@ public class SalvarUsuarioController extends HttpServlet {
 	public SalvarUsuarioController() {
 	}
 
-	private UserDAO dao = new UserDAO();
+//	private UserDAO dao = new UserDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -48,7 +49,7 @@ public class SalvarUsuarioController extends HttpServlet {
 			usuario.setRole(Long.parseLong(role_value.toString()));
 			usuario.setPassword(password);
 
-			dao.salvar(usuario);
+			dao.salvar(usuario, User.class);
 
 			request.setAttribute("msgSucesso", "Usuario " + username
 					+ " salvo com sucesso!");

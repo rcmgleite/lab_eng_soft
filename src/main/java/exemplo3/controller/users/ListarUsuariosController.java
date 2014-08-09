@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exemplo3.dao.UserDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.User;
 
 @WebServlet("/listarUsuarios")
@@ -19,7 +19,8 @@ public class ListarUsuariosController extends HttpServlet {
 	public ListarUsuariosController() {
 	}
 
-	private UserDAO dao = new UserDAO();
+//	private UserDAO dao = new UserDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +35,7 @@ public class ListarUsuariosController extends HttpServlet {
 	private void doService(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<User> usuarios = dao.getUsers();
+			List<User> usuarios = dao.getList(User.class);
 			
 			for(User user: usuarios){
 				user.setRoleAlias();

@@ -22,7 +22,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TipoDeRecurso")
-public class ResourceType implements java.io.Serializable{
+public class ResourceType implements java.io.Serializable, IEntity{
 	
 	/**
 	 * 

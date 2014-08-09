@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import utils.ProjectEnums;
 import utils.ProjectEnums.MissionPriority;
 import utils.ProjectEnums.MissionStatus;
-import exemplo3.dao.RecursoDAO;
-import exemplo3.dao.UserDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Resource;
 import exemplo3.model.User;
 
@@ -21,8 +20,9 @@ import exemplo3.model.User;
 public class NovaMissaoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private RecursoDAO dao = new RecursoDAO();
-	private UserDAO uDAO = new UserDAO();
+//	private RecursoDAO dao = new RecursoDAO();
+//	private UserDAO uDAO = new UserDAO();
+	private GenericDAO dao = new GenericDAO();
 	
 	public NovaMissaoController () {
 	}
@@ -43,7 +43,7 @@ public class NovaMissaoController extends HttpServlet {
 			String id_acidente = request.getParameter("id_acidente");
 			request.setAttribute("id_acidente", id_acidente);
 			
-			List<Resource> resources = dao.getResourcesWhere("mission.id = null");
+			List<Resource> resources = dao.getListEntityWhere("mission.id = null", Resource.class);
 			request.setAttribute("resources", resources);
 			
 			MissionStatus[] mStatus = ProjectEnums.MissionStatus.values();
@@ -52,7 +52,8 @@ public class NovaMissaoController extends HttpServlet {
 			request.setAttribute("mStatus", mStatus);
 			request.setAttribute("mPriority", mPriority);
 			
-			List<User> missionHeads = uDAO.getUsersWhere("role = " + ProjectEnums.UserRoles.CHEFE_MISSAO.ordinal());
+			List<User> missionHeads = dao.getListEntityWhere("role = " + ProjectEnums.UserRoles.CHEFE_MISSAO.ordinal(),
+					User.class);
 			request.setAttribute("missionHeads", missionHeads);
 			
 			this.selectDispatcher(request, response);

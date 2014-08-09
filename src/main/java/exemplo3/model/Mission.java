@@ -30,7 +30,7 @@ import utils.ProjectEnums;
 
 @Entity
 @Table(name = "Missao")
-public class Mission implements java.io.Serializable{
+public class Mission implements java.io.Serializable, IEntity{
 
 	/**
 	 * 

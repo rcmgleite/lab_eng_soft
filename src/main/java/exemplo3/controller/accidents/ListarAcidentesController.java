@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exemplo3.dao.AccidentDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Accident;
 
 @WebServlet("/listarAcidentes")
@@ -20,7 +20,8 @@ public class ListarAcidentesController extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1160257872638561767L;
 
-	private AccidentDAO dao = new AccidentDAO();
+//	private AccidentDAO dao = new AccidentDAO();
+	private GenericDAO dao = new GenericDAO();
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -35,8 +36,12 @@ public class ListarAcidentesController extends HttpServlet{
 	private void doService(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<Accident> accidents = dao.getAccidents();
-			
+			/**
+			 * 	Deve-se garantir que a lista é do tipo pedido...
+			 * 	O warning só poderia ser removido usando-se
+			 * 	@SuppressWarning("unchecked")
+			 **/
+			List<Accident> accidents = dao.getList(Accident.class);
 			for(Accident accident: accidents){
 				/*
 				 *	Seta os atributos typeAlias e statusAlias

@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import utils.ProjectEnums;
 import utils.ProjectEnums.MissionPriority;
 import utils.ProjectEnums.MissionStatus;
-import exemplo3.dao.MissionDAO;
-import exemplo3.dao.RecursoDAO;
-import exemplo3.dao.UserDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Mission;
 import exemplo3.model.Resource;
 import exemplo3.model.User;
@@ -27,9 +25,10 @@ public class EditarMissaoController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -4025578345214393412L;
 	
-	private MissionDAO dao = new MissionDAO();
-	private RecursoDAO recDao = new RecursoDAO();
-	private UserDAO uDAO = new UserDAO();
+//	private MissionDAO dao = new MissionDAO();
+//	private RecursoDAO recDao = new RecursoDAO();
+//	private UserDAO uDAO = new UserDAO();
+	private GenericDAO dao = new GenericDAO();
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -47,17 +46,17 @@ public class EditarMissaoController extends HttpServlet {
 
 			/*id da missão*/
 			Long pk = Long.parseLong(request.getParameter("id"));
-			Mission mission = dao.findMissionByPrimaryKey(pk);
+			Mission mission = dao.findByPrimaryKey(pk, Mission.class);
 
 			String id_acidente = mission.getAccident().getId().toString();
 			request.setAttribute("id_acidente", id_acidente);
 			
 			request.setAttribute("mission", mission);
 			
-			List<Resource> resources = recDao.getResourcesWhere("mission.id = null");
+			List<Resource> resources = dao.getListEntityWhere("mission.id = null", Resource.class);
 			request.setAttribute("resources", resources);
 			
-			List<Resource> allocatedResources = recDao.getResourcesWhere("mission.id = " + pk);
+			List<Resource> allocatedResources = dao.getListEntityWhere("mission.id = " + pk, Resource.class);
 			request.setAttribute("allocatedResources", allocatedResources);
 			
 			MissionStatus[] mStatus = ProjectEnums.MissionStatus.values();
@@ -66,7 +65,8 @@ public class EditarMissaoController extends HttpServlet {
 			request.setAttribute("mStatus", mStatus);
 			request.setAttribute("mPriority", mPriority);
 			
-			List<User> missionHeads = uDAO.getUsersWhere("role = " + ProjectEnums.UserRoles.CHEFE_MISSAO.ordinal());
+			List<User> missionHeads = dao.getListEntityWhere("role = " + ProjectEnums.UserRoles.CHEFE_MISSAO.ordinal(),
+					User.class);
 			request.setAttribute("missionHeads", missionHeads);			
 			
 			this.selectDispatcher(request, response);

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import utils.ProjectEnums;
 import utils.ProjectEnums.AccidentStatus;
 import utils.ProjectEnums.AccidentType;
-import exemplo3.dao.AccidentDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.dao.UtilsDAO;
 import exemplo3.model.Accident;
 
@@ -26,7 +26,7 @@ public class AccidentReportController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -4715299530091293358L;
 
-	private AccidentDAO dao = new AccidentDAO();
+	private GenericDAO dao = new GenericDAO();
 	
 	public AccidentReportController() {
 	}
@@ -93,7 +93,7 @@ public class AccidentReportController extends HttpServlet {
 			 **/
 			else{
 				String where = UtilsDAO.buildWhere(parameters);
-				List<Accident> accidents = this.dao.getAccidentsWhere(where);
+				List<Accident> accidents = this.dao.getListEntityWhere(where, Accident.class);
 				for(Accident accident: accidents){
 					/*
 					 *	Seta os atributos typeAlias e statusAlias

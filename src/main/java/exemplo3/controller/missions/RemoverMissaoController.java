@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import utils.RemoveCascade;
-import exemplo3.dao.MissionDAO;
-import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Mission;
 
 @WebServlet("/removerMissao")
@@ -20,8 +19,9 @@ public class RemoverMissaoController extends HttpServlet {
 	public RemoverMissaoController() {
 	}
 
-	private MissionDAO dao = new MissionDAO();
-	private RecursoDAO recDAO = new RecursoDAO();
+//	private MissionDAO dao = new MissionDAO();
+//	private RecursoDAO recDAO = new RecursoDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -42,13 +42,13 @@ public class RemoverMissaoController extends HttpServlet {
 			/**
 			 * 	Antes de remover a missão, desaloco seus recursos.
 			 **/
-			Mission  mission = dao.findMissionByPrimaryKey(pk);
-			RemoveCascade.deallocateResources(mission, dao, recDAO);
+			Mission  mission = dao.findByPrimaryKey(pk, Mission.class);
+			RemoveCascade.deallocateResources(mission, dao);
 			
 			/**
 			 *	Remove de fato a missao
 			 **/
-			dao.remover(pk);
+			dao.remover(pk, Mission.class);
 			
 			request.setAttribute("msgSucesso", "Missão removida com sucesso!");
 			request.getRequestDispatcher("/detalharAcidente?id=" + mission.getAccident().getId()).forward(request,

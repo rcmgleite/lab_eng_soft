@@ -28,7 +28,7 @@ import utils.ProjectEnums;
 
 @Entity
 @Table(name = "Acidente")
-public class Accident implements java.io.Serializable {
+public class Accident implements java.io.Serializable, IEntity {
 	
 	/**
 	 * 

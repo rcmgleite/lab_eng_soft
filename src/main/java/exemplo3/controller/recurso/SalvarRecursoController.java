@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Resource;
 import exemplo3.model.ResourceType;
 
@@ -21,7 +21,8 @@ public class SalvarRecursoController extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 435311885030051620L;
 
-	private RecursoDAO dao = new RecursoDAO();
+//	private RecursoDAO dao = new RecursoDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -44,16 +45,17 @@ public class SalvarRecursoController extends HttpServlet{
 				resource.setId(Long.parseLong(id));
 			}
 
-			ResourceType rt = dao.getResourceTypeWhere("id = " + resourceTypeID);
+			ResourceType rt = dao.getSingleEntityWhere("id = " + resourceTypeID, ResourceType.class);
 			
 			resource.setResourceType(rt);
 			
 			/*Para não perder a qual missão o recurso esta alocado mesmo quando mudarmos o tipo dele*/
-			List<Resource> rs = dao.getResourcesWhere("id = " + id);
-			if(rs != null && rs.size() != 0)
-				resource.setMission(rs.get(0).getMission());
-			
-			dao.salvarRecurso(resource);
+			if(id != null & !id.equals("")){
+				List<Resource> rs = dao.getListEntityWhere("id = " + id, Resource.class);
+				if(rs != null && rs.size() != 0)
+					resource.setMission(rs.get(0).getMission());
+			}
+			dao.salvar(resource, Resource.class);
 
 			request.setAttribute("msgSucesso", "Tipo de recurso salvo com sucesso!");
 			request.getRequestDispatcher("/listarRecursos").forward(request,

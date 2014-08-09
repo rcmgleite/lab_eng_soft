@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import utils.SessionManager;
-import exemplo3.dao.UserDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.User;
 
 @WebServlet("/login")
@@ -19,7 +19,8 @@ public class LoginController extends HttpServlet {
 	public LoginController() {
 	}
 
-	private UserDAO dao = new UserDAO();
+//	private UserDAO dao = new UserDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	/*sessões de 30 min*/
 	private SessionManager sm = new SessionManager(60 * 30);
@@ -43,7 +44,14 @@ public class LoginController extends HttpServlet {
 		}else{
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			User user = dao.getUserByUnamePassword(username, password);
+			User user = null;
+			try {
+				user = dao.getSingleEntityWhere("username = '" + username + "' and password = '" + password + "'"
+						, User.class);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			if(user != null){
 				Integer role = Integer.parseInt(user.getRole().toString());

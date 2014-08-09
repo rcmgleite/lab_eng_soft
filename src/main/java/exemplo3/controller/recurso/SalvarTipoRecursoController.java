@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exemplo3.dao.RecursoDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.ResourceType;
 
 @WebServlet("/salvarTipoRecurso")
@@ -19,7 +19,8 @@ public class SalvarTipoRecursoController extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 435311885030051620L;
 
-	private RecursoDAO dao = new RecursoDAO();
+//	private RecursoDAO dao = new RecursoDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -48,7 +49,7 @@ public class SalvarTipoRecursoController extends HttpServlet{
 			resource.setDescription(description);
 			resource.setExternal(Boolean.parseBoolean(external));
 
-			dao.salvarTipoRecurso(resource);
+			dao.salvar(resource, ResourceType.class);
 
 			request.setAttribute("msgSucesso", "Tipo de recurso salvo com sucesso!");
 			request.getRequestDispatcher("/listarTiposDeRecursos").forward(request,

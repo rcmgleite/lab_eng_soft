@@ -14,8 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import utils.ProjectEnums;
 import utils.ProjectEnums.MissionPriority;
 import utils.ProjectEnums.MissionStatus;
-import exemplo3.dao.MissionDAO;
-import exemplo3.dao.UserDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.dao.UtilsDAO;
 import exemplo3.model.Mission;
 import exemplo3.model.User;
@@ -28,8 +27,9 @@ public class MissionReportController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -4715299530091293358L;
 
-	private MissionDAO dao = new MissionDAO();
-	private UserDAO uDAO = new UserDAO();
+//	private MissionDAO dao = new MissionDAO();
+//	private UserDAO uDAO = new UserDAO();
+	private GenericDAO dao = new GenericDAO();
 	
 	public MissionReportController() {
 	}
@@ -85,7 +85,8 @@ public class MissionReportController extends HttpServlet {
 				request.setAttribute("mStatus", mStatus);
 				request.setAttribute("mPriority", mPriority);
 				
-				List<User> missionHeads = uDAO.getUsersWhere("role = " + ProjectEnums.UserRoles.CHEFE_MISSAO.ordinal());
+				List<User> missionHeads = dao.getListEntityWhere("role = " + 
+						ProjectEnums.UserRoles.CHEFE_MISSAO.ordinal(), User.class);
 				request.setAttribute("missionHeads", missionHeads);
 				
 				this.selectDispatcher(request, response, false);
@@ -95,7 +96,7 @@ public class MissionReportController extends HttpServlet {
 			 **/
 			else{
 				String where = UtilsDAO.buildWhere(parameters);
-				List<Mission> missions = this.dao.getMissionsWhere(where);
+				List<Mission> missions = this.dao.getListEntityWhere(where, Mission.class);
 				for(Mission mission: missions){
 					mission.setStatusAlias();
 					mission.setPriorityAlias();

@@ -11,10 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import utils.AccidentStatusManager;
 import utils.ProjectEnums;
-import exemplo3.dao.AccidentDAO;
-import exemplo3.dao.MissionDAO;
-import exemplo3.dao.RecursoDAO;
-import exemplo3.dao.UserDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Accident;
 import exemplo3.model.Mission;
 import exemplo3.model.Resource;
@@ -27,10 +24,11 @@ public class SalvarMissaoController extends HttpServlet {
 	public SalvarMissaoController() {
 	}
 
-	private MissionDAO dao = new MissionDAO();
-	private AccidentDAO acDao = new AccidentDAO();
-	private RecursoDAO recDAO = new RecursoDAO();
-	private UserDAO uDAO = new UserDAO();
+//	private MissionDAO mDao = new MissionDAO();
+//	private AccidentDAO acDao = new AccidentDAO();
+	private GenericDAO dao = new GenericDAO();
+//	private RecursoDAO recDAO = new RecursoDAO();
+//	private UserDAO uDAO = new UserDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -75,7 +73,7 @@ public class SalvarMissaoController extends HttpServlet {
 						selected_resources_str += ",";
 				}
 				
-				_resources = recDAO.getResourcesWhere("id in (" + selected_resources_str + ")");
+				_resources = dao.getListEntityWhere("id in (" + selected_resources_str + ")", Resource.class);
 			}
 			//			Integer role_value = ProjectEnums.UserRoles.valueOf(new_role).ordinal();
 			//			usuario.setRole(Long.parseLong(role_value.toString()));
@@ -83,13 +81,13 @@ public class SalvarMissaoController extends HttpServlet {
 			/**
 			 *	Preenche o acidente vinculado a esta missão. 
 			 **/
-			Accident accident = acDao.findByPrimaryKey(Long.parseLong(id_accident));
+			Accident accident = dao.findByPrimaryKey(Long.parseLong(id_accident), Accident.class);
 			mission.setAccident(accident);
 			
-			User missionHead = uDAO.findByPrimaryKey(Long.parseLong(missionHeadId));
+			User missionHead = dao.findByPrimaryKey(Long.parseLong(missionHeadId), User.class);
 			mission.setChefeMissao(missionHead);
 			
-			dao.salvar(mission);
+			dao.salvar(mission, Mission.class);
 
 			if(_resources != null){
 				/**
@@ -97,7 +95,7 @@ public class SalvarMissaoController extends HttpServlet {
 				 **/
 				for(Resource resouce: _resources){
 					resouce.setMission(mission);
-					recDAO.salvarRecurso(resouce);
+					dao.salvar(resouce, Resource.class);
 				}
 			}
 			
@@ -107,7 +105,7 @@ public class SalvarMissaoController extends HttpServlet {
 			 * 	Caso isso não fosse feito, pegaríamos o status de missão antigo e o update não
 			 * 	funcionaria
 			 **/
-			accident = acDao.findByPrimaryKey(Long.parseLong(id_accident));
+			accident = dao.findByPrimaryKey(Long.parseLong(id_accident), Accident.class);
 			AccidentStatusManager.tryUpdateAccidentStatus(accident);
 			
 			request.setAttribute("msgSucesso",  "Missão salva com sucesso!");

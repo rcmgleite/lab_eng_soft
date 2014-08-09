@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import utils.ProjectEnums;
-import exemplo3.dao.AccidentDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Accident;
 
 @WebServlet("/salvarAcidente")
@@ -21,7 +21,7 @@ public class SalvarAcidenteController extends HttpServlet {
 	public SalvarAcidenteController() {
 	}
 
-	private AccidentDAO dao = new AccidentDAO();
+	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -64,7 +64,7 @@ public class SalvarAcidenteController extends HttpServlet {
 			else
 				accident.setStatus(0L); //status em aberto
 				
-			dao.salvar(accident);
+			dao.salvar(accident, Accident.class);
 
 			request.setAttribute("msgSucesso", "Acidente salvo com sucesso!");
 			request.getRequestDispatcher("/listarAcidentes").forward(request, response);

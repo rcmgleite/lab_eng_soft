@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exemplo3.dao.MissionDAO;
-import exemplo3.dao.UserDAO;
+import exemplo3.dao.GenericDAO;
 import exemplo3.model.Mission;
 import exemplo3.model.User;
 
@@ -22,8 +21,7 @@ public class ListarMissoesController extends HttpServlet{
 	 */
 	private static final long serialVersionUID = -667869399998448076L;
 	
-	private MissionDAO dao = new MissionDAO();
-	private UserDAO uDao = new UserDAO();
+	private GenericDAO dao = new GenericDAO();
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -45,12 +43,12 @@ public class ListarMissoesController extends HttpServlet{
 			 **/
 			String strRole = request.getSession().getAttribute("role").toString();
 			if(strRole != null && !strRole.equals("3")){
-				missions = dao.getMissions();
+				missions = dao.getList(Mission.class);
 			}
 			else{
 				String uname = request.getSession().getAttribute("user").toString();
-				User user = uDao.getSingleUserWhere("username like('" + uname + "')");
-				missions = dao.getMissionsWhere("chefeMissao.id = " + user.getId());
+				User user = dao.getSingleEntityWhere("username like('" + uname + "')", User.class);
+				missions = dao.getListEntityWhere("chefeMissao.id = " + user.getId(), Mission.class);
 			}
 			for(Mission mission: missions){
 				mission.setStatusAlias();
