@@ -3,6 +3,7 @@ package exemplo3.controller.missions;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,6 @@ public class RemoverMissaoController extends HttpServlet {
 	public RemoverMissaoController() {
 	}
 
-//	private MissionDAO dao = new MissionDAO();
-//	private RecursoDAO recDAO = new RecursoDAO();
 	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
@@ -51,8 +50,11 @@ public class RemoverMissaoController extends HttpServlet {
 			dao.remover(pk, Mission.class);
 			
 			request.setAttribute("msgSucesso", "Missão removida com sucesso!");
-			request.getRequestDispatcher("/detalharAcidente?id=" + mission.getAccident().getId()).forward(request,
-					response);
+			
+			//Uso o outputstream do servlet para colocar o path para o retorno no 'data' do success do ajax
+			ServletOutputStream out_s = response.getOutputStream();
+			out_s.print("/svc/detalharAcidente?id=" + mission.getAccident().getId());
+			out_s.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("erro", e.getMessage());

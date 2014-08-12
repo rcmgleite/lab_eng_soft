@@ -19,7 +19,11 @@
 			            <td class="text-left">${resource.description}</td>
 			            <td class="text-left">${resource.external}</td>
 			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharTipoRecurso?id=${resource.id}">Detalhar</a>
-			            <td class="text-left"><a href="${pageContext.request.contextPath}/removerTipoRecurso?id=${resource.id}">Remover</a></td>  
+			            <td class="text-left"><a 
+			            	onclick="confirme_remove(${resource.id}, 'ResourceType')" 
+			            	style="cursor: pointer">
+			            	Remover
+		            	</a></td>  
 			          </tr>				
 				</c:forEach>
 		

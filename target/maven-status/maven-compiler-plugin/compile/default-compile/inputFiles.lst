@@ -27,6 +27,7 @@
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/missions/EditarMissaoController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/accidents/AccidentReportController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/missions/NovaMissaoController.java
+/home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/ResourceReportController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/controller/recurso/NovoTipoRecursoController.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/exemplo3/model/User.java
 /home/rafael/Desktop/poli/eng_soft_lab/java_server/exemplo-3/src/main/java/utils/ProjectEnums.java

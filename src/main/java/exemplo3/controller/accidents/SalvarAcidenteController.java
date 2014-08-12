@@ -55,7 +55,15 @@ public class SalvarAcidenteController extends HttpServlet {
 			accident.setLocation(location);
 			accident.setNumVictims(Long.parseLong(numVictims));
 			accident.setDescription(description);
-			accident.setUrlCMS(urlCMS);
+			
+			/**
+			 *	Antes de salvar a URL do SVC, temos que fazer o parse dela..
+			 *	exemplo:
+			 *		url do youtube: https://www.youtube.com/watch?v=HKFDYdaSyng
+			 *		url final:			  //www.youtube.com/embed/HKFDYdaSyng 
+			 **/
+			String finalSVCUrl = parseSVCUrl(urlCMS);
+			accident.setUrlCMS(finalSVCUrl);
 			
 			Integer type_value = ProjectEnums.AccidentType.valueOf(type).ordinal();
 			accident.setType(Long.parseLong(type_value.toString()));
@@ -100,6 +108,30 @@ public class SalvarAcidenteController extends HttpServlet {
 		else{
 			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 		}
+	}
+	
+	/**
+	 *		url de entrada:		  https://www.youtube.com/watch?v=HKFDYdaSyng
+	 *		url final:			  //www.youtube.com/embed/HKFDYdaSyng 
+	 **/
+	private static String parseSVCUrl(String rawUrl){
+		String finalUrl;
+		
+		/**
+		 * 	Primeiro retiro o https: caso ele exista
+		 **/
+		Integer initial_index = rawUrl.indexOf("https:");
+		if(initial_index != -1){
+			finalUrl = rawUrl.substring(initial_index + "https:".length());
+		}
+		else{
+			finalUrl = rawUrl;
+		}
+		/**	
+		 * 	substitui 'watch?v=' por embed/ 
+		 **/
+		finalUrl = finalUrl.replace("watch?v=", "embed/");
+		return finalUrl;
 	}
 }
 

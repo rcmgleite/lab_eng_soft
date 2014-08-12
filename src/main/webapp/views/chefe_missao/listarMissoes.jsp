@@ -41,4 +41,4 @@
 		<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
 	</c:if>
 </div>
-<%@include file="../footer.jsp"%>
+<%@include file="footer.jsp"%>

@@ -19,7 +19,6 @@ public class ListarUsuariosController extends HttpServlet {
 	public ListarUsuariosController() {
 	}
 
-//	private UserDAO dao = new UserDAO();
 	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
@@ -40,7 +39,8 @@ public class ListarUsuariosController extends HttpServlet {
 			for(User user: usuarios){
 				user.setRoleAlias();
 			}
-			
+			String msgSuccess = request.getParameter("msgSucesso");
+			request.setAttribute("msgSucesso", msgSuccess);
 			request.setAttribute("usuarios", usuarios);
 			request.getRequestDispatcher("/views/admin/listarUsuarios.jsp").forward(request, response);
 		} catch (Exception e) {

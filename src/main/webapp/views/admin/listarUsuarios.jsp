@@ -18,8 +18,13 @@
 			            <td class="text-left">${usuario.username}</td>
 			            <td class="text-left">${usuario.password}</td>
 			            <td class="text-left">${usuario.roleAlias}</td>
-			            <td class="text-left"><a href="${pageContext.request.contextPath}/editarUsuario?id=${usuario.id}">Editar</a>
-			             <td class="text-left"><a href="${pageContext.request.contextPath}/removerUsuario?id=${usuario.id}">Remover</a></td>  
+			            <td class="text-left"><a href="${pageContext.request.contextPath}/editarUsuario?id=${usuario.id}">Editar</a></td>
+			            <td class="text-left"><a 
+			            	onclick="confirme_remove(${usuario.id}, 'User')" 
+			            	style="cursor: pointer">
+			            	Remover
+		            	</a></td>
+			            <!--<td class="text-left"><a href="${pageContext.request.contextPath}/removerUsuario?id=${usuario.id}">Remover</a></td>-->  
 			          </tr>				
 				</c:forEach>
 		

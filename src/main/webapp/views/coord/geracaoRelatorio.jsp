@@ -3,7 +3,6 @@
 	<div>
 		<h2 class="list_title">Relatórios</h2>
 		<div style="margin: 30px">
-			<a class="btn btn-primary btn-lg pull-left btn_report" href="#" role="button">Relatório geral</a>
 			<a class="btn btn-primary btn-lg pull-left btn_report" href="#" role="button">Relatório Acidentes</a>
 			<a class="btn btn-primary btn-lg pull-left btn_report" href="#" role="button">Relatório Missões</a>
 			<a class="btn btn-primary btn-lg pull-left btn_report" href="#" role="button">Relatório Recursos</a>

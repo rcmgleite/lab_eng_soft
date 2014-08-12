@@ -3,6 +3,7 @@ package exemplo3.controller.users;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,6 @@ public class RemoverUsuarioController extends HttpServlet {
 	public RemoverUsuarioController() {
 	}
 
-//	private UserDAO uDAO = new UserDAO();
-//	private MissionDAO mDAO = new MissionDAO();
 	private GenericDAO dao = new GenericDAO();
 	
 	protected void doGet(HttpServletRequest request,
@@ -50,8 +49,11 @@ public class RemoverUsuarioController extends HttpServlet {
 			dao.remover(pk, User.class);
 			
 			request.setAttribute("msgSucesso", "Usuario removido com sucesso!");
-			request.getRequestDispatcher("/listarUsuarios").forward(request,
-					response);
+			
+			//Uso o outputstream do servlet para colocar o path para o retorno no 'data' do success do ajax
+			ServletOutputStream out_s = response.getOutputStream();
+			out_s.print("/svc/listarUsuarios?msgSucesso='Dado deletado com sucesso!'");
+			out_s.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("erro", e.getMessage());

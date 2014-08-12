@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +22,7 @@ public class RemoverAcidenteController extends HttpServlet {
 	public RemoverAcidenteController() {
 	}
 
-//	private AccidentDAO dao = new AccidentDAO();
 	private GenericDAO dao = new GenericDAO();
-//	private MissionDAO mDao = new MissionDAO();
-//	private RecursoDAO rDao = new RecursoDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -62,8 +60,11 @@ public class RemoverAcidenteController extends HttpServlet {
 			dao.remover(pk, Accident.class);
 			
 			request.setAttribute("msgSucesso", "Acidente removido com sucesso!");
-			request.getRequestDispatcher("/listarAcidentes").forward(request,
-					response);
+
+			//Uso o outputstream do servlet para colocar o path para o retorno no 'data' do success do ajax
+			ServletOutputStream out_s = response.getOutputStream();
+			out_s.print("/svc/listarAcidentes");
+			out_s.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("erro", e.getMessage());

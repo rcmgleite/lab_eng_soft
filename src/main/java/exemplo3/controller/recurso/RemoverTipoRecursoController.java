@@ -3,6 +3,7 @@ package exemplo3.controller.recurso;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,6 @@ public class RemoverTipoRecursoController extends HttpServlet {
 	public RemoverTipoRecursoController() {
 	}
 
-//	private RecursoDAO dao = new RecursoDAO();
 	private GenericDAO dao = new GenericDAO();
 
 	protected void doGet(HttpServletRequest request,
@@ -38,8 +38,11 @@ public class RemoverTipoRecursoController extends HttpServlet {
 			dao.remover(pk, ResourceType.class);
 			
 			request.setAttribute("msgSucesso", "Tipo de recurso removido com sucesso!");
-			request.getRequestDispatcher("/listarTiposDeRecursos").forward(request,
-					response);
+			
+			//Uso o outputstream do servlet para colocar o path para o retorno no 'data' do success do ajax
+			ServletOutputStream out_s = response.getOutputStream();
+			out_s.print("/svc/listarTiposDeRecursos");
+			out_s.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMsg", "Erro ao deletar item selecionado. Ele está sendo usado"

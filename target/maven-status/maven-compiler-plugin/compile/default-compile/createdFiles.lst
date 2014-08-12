@@ -22,9 +22,9 @@ exemplo3/controller/accidents/EditarAcidenteController.class
 utils/SessionManager.class
 exemplo3/controller/missions/NovaMissaoController.class
 utils/ProjectEnums.class
+utils/ProjectEnums$AccidentStatus.class
 exemplo3/controller/users/ListarUsuariosController.class
 exemplo3/controller/missions/EditarMissaoController.class
-utils/ProjectEnums$AccidentStatus.class
 exemplo3/controller/users/RemoverUsuarioController.class
 exemplo3/controller/recurso/SalvarRecursoController.class
 exemplo3/controller/recurso/SalvarTipoRecursoController.class
@@ -42,6 +42,7 @@ exemplo3/model/ResourceType.class
 exemplo3/model/IEntity.class
 report/ReportController.class
 exemplo3/model/User.class
+exemplo3/controller/recurso/ResourceReportController.class
 exemplo3/controller/recurso/ListarRecrusosController.class
 exemplo3/model/Mission$1.class
 exemplo3/model/Mission.class

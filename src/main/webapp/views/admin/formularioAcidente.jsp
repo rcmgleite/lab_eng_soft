@@ -94,7 +94,11 @@
 					            <td class="text-left">${mission.priorityAlias}</td>  
 					            <td class="text-left">${mission.accident.id}</td>  
 					            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharMissao?id=${mission.id}">Editar</a>
-					            <td class="text-left"><a href="${pageContext.request.contextPath}/removerMissao?id=${mission.id}">Remover</a></td>  
+					          	<td class="text-left"><a 
+					            	onclick="confirme_remove(${mission.id}, 'Mission')" 
+					            	style="cursor: pointer">
+					            	Remover
+				            	</a></td>
 					          </tr>				
 						</c:forEach>
 				
@@ -115,4 +119,4 @@
 	</c:if>
 	
 </div>
-<%@include file="../footer.jsp"%>
+<%@include file="footer.jsp"%>

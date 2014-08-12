@@ -22,7 +22,11 @@
 			            	<td class="text-left">não alocado</td>
 			            </c:if>
 			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharRecurso?id=${resource.id}">Detalhar</a>
-			            <td class="text-left"><a href="${pageContext.request.contextPath}/removerRecurso?id=${resource.id}">Remover</a></td>  
+			          	<td class="text-left"><a 
+			            	onclick="confirme_remove(${resource.id}, 'Resource')" 
+			            	style="cursor: pointer">
+			            	Remover
+		            	</a></td>
 			          </tr>				
 				</c:forEach>
 		
