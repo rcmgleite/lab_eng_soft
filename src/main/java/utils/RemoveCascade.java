@@ -7,6 +7,11 @@ import exemplo3.model.Mission;
 import exemplo3.model.Resource;
 import exemplo3.model.User;
 
+/**
+ * 	Essa classe só foi criada porque não conhecia triggers...
+ * 	A maneira mais correta de se fazer o cascade seria criar triggers no banco
+ * 	para que no momento que um DELETE fosse chamado, o trigger já fosse chamado e fizesse toda a atualização
+ **/
 public class RemoveCascade {
 	public static void deallocateResources(Mission mission, GenericDAO dao){
 		try {

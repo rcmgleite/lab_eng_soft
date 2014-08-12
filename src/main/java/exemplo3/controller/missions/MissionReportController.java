@@ -95,7 +95,7 @@ public class MissionReportController extends HttpServlet {
 			 * 	Caso contrário já deve devolver o relatório
 			 **/
 			else{
-				String where = UtilsDAO.buildWhere(parameters);
+				String where = UtilsDAO.buildWhere(parameters, Mission.class);
 				List<Mission> missions = this.dao.getListEntityWhere(where, Mission.class);
 				for(Mission mission: missions){
 					mission.setStatusAlias();

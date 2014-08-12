@@ -92,7 +92,7 @@ public class AccidentReportController extends HttpServlet {
 			 * 	Caso contrário já deve devolver o relatório
 			 **/
 			else{
-				String where = UtilsDAO.buildWhere(parameters);
+				String where = UtilsDAO.buildWhere(parameters, Accident.class);
 				List<Accident> accidents = this.dao.getListEntityWhere(where, Accident.class);
 				for(Accident accident: accidents){
 					/*

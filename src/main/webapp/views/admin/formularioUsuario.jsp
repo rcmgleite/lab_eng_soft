@@ -68,5 +68,8 @@
 		<input type="hidden" name="id" id="id" value="${usuario.id}"/>
 		<button type="submit" style="float:right" class="btn btn-primary btn-lg">Salvar</button>
 	</form>
+	<c:if test="${not empty errorMsg}">
+		<span class="label label-danger" style="font-size: 14px;">${errorMsg}</span>
+	</c:if>
 </div>
 <%@include file="../footer.jsp"%>
