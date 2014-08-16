@@ -5,8 +5,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/svc/js/bootstrap.min.js"></script>
     <script src="/svc/js/jquery-min.js"></script>
+    <script src="/svc/js/custom.js"></script>
   </body>
 </html>
-
-
-

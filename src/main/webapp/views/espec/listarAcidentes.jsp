@@ -31,8 +31,8 @@
 			</tbody>  
 		</table>
 		<c:if test="${not empty msgSucesso}">
-			<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
+			<span class="label label-success success_msg" style="font-size: 14px;">${msgSucesso}</span>
 		</c:if>
 	</div>
 </div>
-<%@include file="../footer.jsp"%>
+<%@include file="footer.jsp"%>

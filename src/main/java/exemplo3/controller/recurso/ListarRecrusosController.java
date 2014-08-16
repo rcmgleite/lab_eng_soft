@@ -39,6 +39,10 @@ public class ListarRecrusosController extends HttpServlet{
 			List<Resource> resources = dao.getList(Resource.class);
 		
 			request.setAttribute("resources", resources);
+			
+			String msgSuccess = request.getParameter("msgSucesso");
+			request.setAttribute("msgSucesso", msgSuccess);
+			
 			this.selectDispatcher(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -72,4 +72,4 @@
 		<span class="label label-danger" style="font-size: 14px;">${errorMsg}</span>
 	</c:if>
 </div>
-<%@include file="../footer.jsp"%>
+<%@include file="footer.jsp"%>

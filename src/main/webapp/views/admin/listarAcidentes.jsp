@@ -29,18 +29,18 @@
 		             		onclick="confirme_remove(${accident.id}, 'Accident')"
 		             		style="cursor: pointer">
 		             			Remover
-	             			</a></td>
+	             			</a>
+             			</td>
 		             	<!--  <td class="text-left"><a href="${pageContext.request.contextPath}/removerAcidente?id=${accident.id}">Remover</a></td>-->  
 			          </tr>				
 				</c:forEach>
 		
 			</tbody>  
 		</table>
+		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novoAcidente" role="button">Cadastrar Acidente</a>
 		<c:if test="${not empty msgSucesso}">
 			<span class="label label-success" style="font-size: 14px;">${msgSucesso}</span>
 		</c:if>
-		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novoAcidente" role="button">Cadastrar Acidente</a>
-
 	</div>
 </div>
 <%@include file="footer.jsp"%>

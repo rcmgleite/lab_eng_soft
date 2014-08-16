@@ -41,4 +41,4 @@
 		<!-- <a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novaMissao" role="button">Cadastrar Missão</a>-->
 	</div>
 </div>
-<%@include file="../footer.jsp"%>
+<%@include file="footer.jsp"%>

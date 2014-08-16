@@ -41,7 +41,7 @@ public class RemoverTipoRecursoController extends HttpServlet {
 			
 			//Uso o outputstream do servlet para colocar o path para o retorno no 'data' do success do ajax
 			ServletOutputStream out_s = response.getOutputStream();
-			out_s.print("/svc/listarTiposDeRecursos");
+			out_s.print("/svc/listarTiposDeRecursos?msgSucesso='Dado deletado com sucesso!'");
 			out_s.flush();
 		} catch (Exception e) {
 			e.printStackTrace();

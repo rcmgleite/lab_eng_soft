@@ -22,7 +22,12 @@
 			            	<td class="text-left">não alocado</td>
 			            </c:if>
 			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharRecurso?id=${resource.id}">Detalhar</a>
-			            <td class="text-left"><a href="${pageContext.request.contextPath}/removerRecurso?id=${resource.id}">Remover</a></td>  
+			          	<td class="text-left"><a 
+			            	onclick="confirme_remove(${resource.id}, 'Resource')" 
+			            	style="cursor: pointer">
+			            	Remover
+	            			</a>
+            			</td>
 			          </tr>				
 				</c:forEach>
 		
@@ -34,4 +39,4 @@
 		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novoRecurso" role="button">Cadastrar Recurso</a>
 	</div>
 </div>
-<%@include file="../footer.jsp"%>
+<%@include file="footer.jsp"%>

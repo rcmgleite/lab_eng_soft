@@ -25,7 +25,12 @@
 			            <td class="text-left">${accident.typeAlias}</td>
 			            <td class="text-left">${accident.statusAlias}</td>
 			            <td class="text-left"><a href="${pageContext.request.contextPath}/detalharAcidente?id=${accident.id}">Detalhes</a>
-		             	<td class="text-left"><a href="${pageContext.request.contextPath}/removerAcidente?id=${accident.id}">Remover</a></td>  
+			            <td class="text-left"><a 
+		             		onclick="confirme_remove(${accident.id}, 'Accident')"
+		             		style="cursor: pointer">
+		             			Remover
+            				</a>
+           				</td>
 			          </tr>				
 				</c:forEach>
 		
@@ -37,4 +42,4 @@
 		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novoAcidente" role="button">Cadastrar Acidente</a>
 	</div>
 </div>
-<%@include file="../footer.jsp"%>
+<%@include file="footer.jsp"%>

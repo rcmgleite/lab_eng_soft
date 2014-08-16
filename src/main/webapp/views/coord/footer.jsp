@@ -8,6 +8,3 @@
     <script src="/svc/js/custom.js"></script>
   </body>
 </html>
-
-
-

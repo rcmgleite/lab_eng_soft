@@ -39,6 +39,10 @@ public class ListarTiposRecursosController extends HttpServlet{
 			List<ResourceType> resources = dao.getList(ResourceType.class);
 		
 			request.setAttribute("resources", resources);
+			
+			String msgSuccess = request.getParameter("msgSucesso");
+			request.setAttribute("msgSucesso", msgSuccess);
+			
 			request.getRequestDispatcher("/views/admin/listarTipoDeRecursos.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

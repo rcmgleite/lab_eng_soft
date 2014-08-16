@@ -26,4 +26,4 @@
 		<button type="submit" style="float:right" class="btn btn-primary btn-lg">Salvar</button>
 	</form>
 </div>
-<%@include file="../footer.jsp"%>
+<%@include file="footer.jsp"%>

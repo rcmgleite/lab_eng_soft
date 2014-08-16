@@ -38,4 +38,4 @@
 		<a class="btn btn-primary btn-lg pull-right" href="${pageContext.request.contextPath}/novoRecurso" role="button">Cadastrar Recurso</a>
 	</div>
 </div>
-<%@include file="../footer.jsp"%>
+<%@include file="footer.jsp"%>

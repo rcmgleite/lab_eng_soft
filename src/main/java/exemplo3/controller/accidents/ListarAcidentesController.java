@@ -52,6 +52,9 @@ public class ListarAcidentesController extends HttpServlet{
 			
 			request.setAttribute("accidents", accidents);
 			
+			String msgSuccess = request.getParameter("msgSucesso");
+			request.setAttribute("msgSucesso", msgSuccess);
+			
 			this.selectDispatcher(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

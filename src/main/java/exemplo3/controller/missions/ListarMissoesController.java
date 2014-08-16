@@ -56,6 +56,10 @@ public class ListarMissoesController extends HttpServlet{
 			}
 			
 			request.setAttribute("missions", missions);
+			
+			String msgSuccess = request.getParameter("msgSucesso");
+			request.setAttribute("msgSucesso", msgSuccess);
+			
 			this.selectDispatcher(request, response);
 			
 		} catch (Exception e) {
