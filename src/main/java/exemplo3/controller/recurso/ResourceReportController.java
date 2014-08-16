@@ -102,7 +102,7 @@ public class ResourceReportController extends HttpServlet {
 	
 			case 1:
 				request.setAttribute("role", "1");
-				if(hasParameters)
+				if(!hasParameters)
 					request.getRequestDispatcher("/views/coord/relatorioRecurso.jsp").forward(request, response);
 				else
 					request.getRequestDispatcher("/views/coord/listarRecursos.jsp").forward(request, response);

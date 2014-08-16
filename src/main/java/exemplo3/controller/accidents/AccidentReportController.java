@@ -129,7 +129,7 @@ public class AccidentReportController extends HttpServlet {
 	
 			case 1:
 				request.setAttribute("role", "1");
-				if(hasParameters)
+				if(!hasParameters)
 					request.getRequestDispatcher("/views/coord/relatorioAcidente.jsp").forward(request, response);
 				else
 					request.getRequestDispatcher("/views/coord/listarAcidentes.jsp").forward(request, response);
