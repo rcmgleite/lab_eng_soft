@@ -24,11 +24,7 @@ public class SalvarMissaoController extends HttpServlet {
 	public SalvarMissaoController() {
 	}
 
-//	private MissionDAO mDao = new MissionDAO();
-//	private AccidentDAO acDao = new AccidentDAO();
 	private GenericDAO dao = new GenericDAO();
-//	private RecursoDAO recDAO = new RecursoDAO();
-//	private UserDAO uDAO = new UserDAO();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -98,6 +94,19 @@ public class SalvarMissaoController extends HttpServlet {
 					dao.salvar(resouce, Resource.class);
 				}
 			}
+			/**
+			 * 	Se o status da missão for igual a COMPLETED, desvinculo os recursos da missão
+			 **/
+			
+			if(mission.getStatus().intValue() == ProjectEnums.MissionStatus.CONCLUDED.ordinal()){
+				Mission _mission = dao.getSingleEntityWhere("id = " + mission.getId(), Mission.class);
+				List<Resource> rs = _mission.getResources();
+				for(Resource r : rs){
+					r.setMission(null);
+					dao.salvar(r, Resource.class);
+				}
+			}
+			
 			
 			/**
 			 * 	Por fim, falta atualizar o status do acidente caso todas as missões dele estejam finalizadas
